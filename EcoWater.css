@@ -1,4 +1,4 @@
-* {
+{
   box-sizing: border-box;
 }
 
@@ -637,3 +637,4 @@ nav::-webkit-scrollbar-thumb {
 #tabela-registros {
   margin-top: 20px;
 }
+
