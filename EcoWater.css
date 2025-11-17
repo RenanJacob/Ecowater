@@ -8,9 +8,12 @@ body {
     padding: 0;
     background: #e3f2fd;
     color: #333;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+/* ======================= HEADER ======================= */
 
 header {
     background-color: #1565c0;
@@ -51,7 +54,6 @@ header {
     opacity: 0.85;
 }
 
-/* MENU */
 #menu-toggle {
     position: absolute;
     top: 20px;
@@ -71,6 +73,8 @@ header {
     outline: none;
 }
 
+/* ======================= MENU ======================= */
+
 nav {
     position: fixed;
     top: 0;
@@ -83,10 +87,13 @@ nav {
     flex-direction: column;
     gap: 12px;
     z-index: 1000;
+
     transform: translateX(-100%);
     transition: transform 0.35s ease;
+
     overflow-y: auto;
     box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+
     user-select: none;
 }
 
@@ -125,11 +132,13 @@ nav a {
 nav a:hover,
 nav a:focus {
     background-color: #1976d2;
+    outline: none;
     border-left-color: #ffc107;
     color: #fff;
 }
 
-/* BOTÕES HEADER */
+/* ======================= BOTÕES HEADER ======================= */
+
 .btn-container {
     display: flex;
     flex-direction: column;
@@ -149,17 +158,20 @@ nav a:focus {
     cursor: pointer;
     font-size: 1.1rem;
     box-shadow: 0 3px 8px rgba(21, 101, 192, 0.4);
-    transition: 0.3s;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    user-select: none;
 }
 
 .btn-container button:hover,
 .btn-container button:focus {
     background-color: #f0f4ff;
     color: #0d47a1;
+    outline: none;
     transform: scale(1.05);
 }
 
-/* PÁGINAS */
+/* ======================= PÁGINAS ======================= */
+
 .pagina {
     display: none !important;
     opacity: 0;
@@ -173,20 +185,7 @@ nav a:focus {
     transform: translateX(0);
 }
 
-.pagina.ativa {
-    animation: slideIn 0.6s ease;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+/* ======================= TITULOS ======================= */
 
 h2 {
     color: #0d47a1;
@@ -203,21 +202,25 @@ h3 {
     font-size: 1.4rem;
 }
 
-/* FOOTER */
+/* ======================= FOOTER ======================= */
+
 footer {
     background-color: #1565c0;
     color: white;
     text-align: center;
     font-size: 0.9rem;
     padding: 12px 20px;
+    user-select: none;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100vw;
+    margin: 0;
     z-index: 9999;
 }
 
-/* MODAIS */
+/* ======================= MODAIS ======================= */
+
 .modal {
     display: none;
     position: fixed;
@@ -226,10 +229,13 @@ footer {
     top: 0;
     width: 100vw;
     height: 100vh;
+
     overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.45);
+
     align-items: center;
     justify-content: center;
+
     padding: 20px;
 }
 
@@ -244,10 +250,11 @@ footer {
     width: 100%;
     padding: 28px 30px 36px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 18px;
-    position: relative;
 }
 
 .close-btn {
@@ -259,11 +266,13 @@ footer {
     font-size: 26px;
     cursor: pointer;
     color: #777;
-    transition: 0.25s;
+    transition: color 0.25s;
 }
 
-.close-btn:hover {
+.close-btn:hover,
+.close-btn:focus {
     color: #333;
+    outline: none;
 }
 
 .modal-content h3 {
@@ -279,11 +288,15 @@ form input {
     border: 1.5px solid #bbb;
     border-radius: 10px;
     font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
     transition: border-color 0.3s;
+    width: 100%;
+    user-select: text;
 }
 
 form input:focus {
     border-color: #1565c0;
+    outline: none;
 }
 
 .submit-btn {
@@ -296,14 +309,18 @@ form input:focus {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.3s;
+    user-select: none;
 }
 
-.submit-btn:hover {
+.submit-btn:hover,
+.submit-btn:focus {
     background-color: #0d47a1;
+    outline: none;
 }
 
-/* FEEDBACK */
+/* ======================= FEEDBACK ======================= */
+
 #feedback-message {
     position: fixed;
     bottom: 20px;
@@ -317,16 +334,35 @@ form input:focus {
     font-weight: 600;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1rem;
+
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s ease;
+    user-select: none;
 }
 
 #feedback-message.show {
     opacity: 1;
+    pointer-events: auto;
 }
 
-/* CARROSSEL */
+/* ======================= SCROLLBAR MENU ======================= */
+
+nav::-webkit-scrollbar {
+    width: 8px;
+}
+
+nav::-webkit-scrollbar-track {
+    background: #0d47a1;
+}
+
+nav::-webkit-scrollbar-thumb {
+    background-color: #1976d2;
+    border-radius: 4px;
+}
+
+/* ======================= CARROSSEL ======================= */
+
 .carrossel {
     position: relative;
     max-width: 800px;
@@ -339,20 +375,20 @@ form input:focus {
 .slides {
     display: none;
     text-align: center;
-    background: white;
 }
 
 .slides img {
     width: 100%;
     height: auto;
+    display: block;
 }
 
 .slides p {
-    background-color: #1565c0;
+    background-color: #0d47a1;
     color: white;
     margin: 0;
-    padding: 12px;
-    font-size: 1rem;
+    padding: 10px;
+    font-weight: 500;
 }
 
 .slides.ativo {
@@ -361,29 +397,22 @@ form input:focus {
 }
 
 @keyframes fade {
-    from {
-        opacity: 0.3;
-        transform: scale(0.98);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .carrossel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(21, 101, 192, 0.75);
+    background-color: rgba(13, 71, 161, 0.7);
     border: none;
     color: white;
     font-size: 2rem;
-    padding: 8px 14px;
+    padding: 10px;
     cursor: pointer;
     border-radius: 50%;
     z-index: 10;
-    transition: 0.2s;
 }
 
 .carrossel-btn:hover {
@@ -391,14 +420,15 @@ form input:focus {
 }
 
 .carrossel-btn.anterior {
-    left: 12px;
+    left: 10px;
 }
 
 .carrossel-btn.proximo {
-    right: 12px;
+    right: 10px;
 }
 
-/* INÍCIO */
+/* ======================= INÍCIO ======================= */
+
 .inicio-container {
     display: flex;
     flex-wrap: wrap;
@@ -426,14 +456,32 @@ form input:focus {
 .inicio-texto p {
     font-size: 1.1rem;
     line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.inicio-lista {
+    list-style: none;
+    padding: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.inicio-lista li {
+    margin-bottom: 8px;
+}
+
+.inicio-carrossel {
+    flex: 1 1 500px;
 }
 
 .inicio-lista li::before {
-    content: "✔️ ";
+    content: '✔️ ';
     color: #1565c0;
+    margin-right: 8px;
 }
 
-/* FORMS REGISTRO E SERVIÇOS */
+/* ======================= FORMULÁRIOS (registro e serviços) ======================= */
+
 #pagina-registro form,
 #pagina-servicos form {
     margin-top: 20px;
@@ -450,7 +498,8 @@ form input:focus {
     border-radius: 8px;
     border: 1.5px solid #bbb;
     font-size: 1rem;
-    transition: 0.3s;
+    font-family: 'Roboto', sans-serif;
+    transition: border-color 0.3s;
 }
 
 #pagina-servicos textarea {
@@ -460,15 +509,19 @@ form input:focus {
 #pagina-registro input:focus,
 #pagina-servicos select:focus,
 #pagina-servicos textarea:focus {
+    outline: none;
     border-color: #1565c0;
 }
 
-/* TABELA MONITORAMENTO */
+/* ======================= TABELA MONITORAMENTO ======================= */
+
 .tabela-monitoramento {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
+    font-size: 1rem;
     background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-radius: 8px;
     overflow: hidden;
 }
@@ -478,6 +531,7 @@ form input:focus {
     color: white;
     text-align: center;
     padding: 12px;
+    font-weight: 600;
 }
 
 .tabela-monitoramento td {
