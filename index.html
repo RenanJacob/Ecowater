@@ -50,21 +50,27 @@
       </ul>
     </div>
 
-   <div class="carrossel">
-    <div class="slides ativo">
-        <img src="imagem1.png" alt="Redução de Consumo">
-    </div>
-    <div class="slides">
-        <img src="imagem2.png" alt="Educação Ambiental">
-    </div>
-    <div class="slides">
-        <img src="imagem3.png" alt="Tecnologia e Acesso">
+   <div class="inicio-carrossel">
+  <div class="carrossel" aria-roledescription="carousel">
+    <div class="slides ativo" data-index="0">
+      <img src="imagem1.png" alt="Redução de Consumo">
+      <p>Redução de até 30% no consumo de água em escolas parceiras.</p>
     </div>
 
-    <button class="carrossel-btn anterior">&#10094;</button>
-    <button class="carrossel-btn proximo">&#10095;</button>
+    <div class="slides" data-index="1">
+      <img src="imagem2.png" alt="Educação Ambiental">
+      <p>Campanhas educativas que envolvem crianças e jovens.</p>
+    </div>
+
+    <div class="slides" data-index="2">
+      <img src="imagem3.png" alt="Tecnologia e Acesso">
+      <p>Ferramentas de consumo.</p>
+    </div>
+
+    <button class="carrossel-btn anterior" aria-label="Anterior">&#10094;</button>
+    <button class="carrossel-btn proximo" aria-label="Próximo">&#10095;</button>
+  </div>
 </div>
-
     </div>
   </div>
 </section>
@@ -242,6 +248,7 @@
 
 </body>
 </html>
+
 
 
 
