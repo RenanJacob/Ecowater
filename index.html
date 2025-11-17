@@ -1,219 +1,224 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>EcoWater</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>EcoWater</title>
 
-  <!-- Ícone -->
-  <link rel="icon" href="Logotipo EcoWater.svg">
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="EcoWater.css"/>
+    <link rel="icon" href="Logotipo EcoWater.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="EcoWater.css"/>
 </head>
 
 <body>
-
 <header>
-  <button id="menu-toggle" title="Abrir menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">☰</button>
-  <div class="header-content">
-    <h1>EcoWater</h1>
-    <p>Por um uso mais consciente da água</p>
-  </div>
-  <div class="btn-container">
-    <button id="btn-cadastrar" type="button" aria-haspopup="dialog" aria-controls="modal-cadastro">Cadastrar-se</button>
-    <button id="btn-login" type="button" aria-haspopup="dialog" aria-controls="modal-login">Login</button>
-  </div>
+    <button id="menu-toggle" title="Abrir menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">☰</button>
+
+    <div class="header-content">
+        <h1>EcoWater</h1>
+        <p>Por um uso mais consciente da água</p>
+    </div>
+
+    <div class="btn-container">
+        <button id="btn-cadastrar" type="button">Cadastrar-se</button>
+        <button id="btn-login" type="button">Login</button>
+    </div>
 </header>
 
 <nav id="menu" aria-label="Menu principal" aria-hidden="true">
-  <button id="menu-close" title="Fechar menu" aria-label="Fechar menu">✖</button>
-
-  <!-- ###############  LINKS CORRIGIDOS ############### -->
-  <a href="#pagina-inicial" tabindex="0">Início</a>
-  <a href="#pagina-monitoramento" tabindex="0">Monitoramento</a>
-  <a href="#pagina-participacao" tabindex="0">Participação da Comunidade</a>
-  <a href="#pagina-educacao" tabindex="0">Educação e Conscientização</a>
-  <a href="#pagina-registro" tabindex="0">Registro de Consumo de Água</a>
-  <a href="#pagina-servicos" tabindex="0">Acionar Serviços</a>
+    <button id="menu-close">✖</button>
+    <a href="#inicial">Início</a>
+    <a href="#monitoramento">Monitoramento</a>
+    <a href="#participacao">Participação da Comunidade</a>
+    <a href="#educacao">Educação e Conscientização</a>
+    <a href="#registro">Registro de Consumo de Água</a>
+    <a href="#servicos">Acionar Serviços</a>
 </nav>
 
 <main id="conteudo">
 
-<section id="pagina-inicial" class="pagina ativa">
-  <div class="inicio-container">
-    <div class="inicio-texto">
-      <h2>Bem-vindo ao <span class="highlight">EcoWater</span></h2>
-      <p>Uma plataforma digital que promove o uso consciente da água...</p>
+    <!-- Página inicial -->
+    <section id="pagina-inicial" class="pagina ativa">
+        <div class="inicio-container">
+            <div class="inicio-texto">
+                <h2>Bem-vindo ao <span class="highlight">EcoWater</span></h2>
+                <p>Uma plataforma digital que promove o uso consciente da água...</p>
 
-      <ul class="inicio-lista">
-        <li>💧 Monitoramento inteligente do consumo</li>
-        <li>📊 Relatórios personalizados</li>
-        <li>📚 Educação sobre sustentabilidade hídrica</li>
-        <li>🤝 Ações colaborativas com a comunidade</li>
-      </ul>
-    </div>
+                <ul class="inicio-lista">
+                    <li>💧 Monitoramento inteligente do consumo</li>
+                    <li>📊 Relatórios personalizados</li>
+                    <li>📚 Educação sobre sustentabilidade hídrica</li>
+                    <li>🤝 Ações colaborativas com a comunidade</li>
+                </ul>
+            </div>
 
-<div class="inicio-carrossel">
-  <div class="carrossel">
-    <div class="slides ativo">
-      <img src="imagem1.png" alt="Redução de Consumo">
-      <p>Redução de até 30% no consumo de água em escolas parceiras.</p>
-    </div>
-    <div class="slides">
-      <img src="imagem2.png" alt="Educação Ambiental">
-      <p>Campanhas educativas que envolvem crianças e jovens.</p>
-    </div>
-    <div class="slides">
-      <img src="imagem3.png" alt="Tecnologia e Acesso">
-      <p>Ferramentas de consumo.</p>
-    </div>
+            <div class="inicio-carrossel">
+                <div class="carrossel">
 
-    <button class="carrossel-btn anterior">&#10094;</button>
-    <button class="carrossel-btn proximo">&#10095;</button>
-  </div>
-</div>
+                    <div class="slides ativo">
+                        <img src="imagem1.png" alt="Redução de Consumo">
+                        <p>Redução de até 30% no consumo de água em escolas parceiras.</p>
+                    </div>
 
-  </div>
-</section>
+                    <div class="slides">
+                        <img src="imagem2.png" alt="Educação Ambiental">
+                        <p>Campanhas educativas que envolvem crianças e jovens.</p>
+                    </div>
 
-<section id="pagina-monitoramento" class="pagina">
-  <h2>Monitoramento</h2>
-  <article>
-    <p>Visualize seu consumo hídrico...</p>
+                    <div class="slides">
+                        <img src="imagem3.png" alt="Tecnologia e Acesso">
+                        <p>Ferramentas de consumo.</p>
+                    </div>
 
-    <table class="tabela-monitoramento">
-      <thead>
-        <tr>
-          <th>Data</th>
-          <th>Consumo (litros)</th>
-          <th>Média diária</th>
-          <th>Meta</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>01/09/2025</td><td>150</td><td>155</td><td>140</td></tr>
-        <tr><td>02/09/2025</td><td>162</td><td>158</td><td>140</td></tr>
-        <tr><td>03/09/2025</td><td>148</td><td>153</td><td>140</td></tr>
-        <tr><td>04/09/2025</td><td>172</td><td>158</td><td>140</td></tr>
-        <tr><td>05/09/2025</td><td>160</td><td>158</td><td>140</td></tr>
-      </tbody>
-    </table>
-  </article>
-</section>
+                    <button class="carrossel-btn anterior">&#10094;</button>
+                    <button class="carrossel-btn proximo">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="pagina-participacao" class="pagina">
-  <h2>Participação da Comunidade</h2>
-  <article>
-    <p>Veja como sua vizinhança está contribuindo...</p>
-    <h3>Projetos Ativos:</h3>
-    <ul>
-      <li>🌱 Hortas coletivas</li>
-      <li>🚿 Troca de torneiras antigas</li>
-      <li>📢 Campanhas nas escolas</li>
-    </ul>
-  </article>
-</section>
+    <!-- Monitoramento -->
+    <section id="pagina-monitoramento" class="pagina">
+        <h2>Monitoramento</h2>
+        <article>
+            <p>Visualize seu consumo hídrico...</p>
+            <table class="tabela-monitoramento">
+                <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Consumo (litros)</th>
+                    <th>Média diária</th>
+                    <th>Meta</th>
+                </tr>
+                </thead>
 
-<section id="pagina-educacao" class="pagina">
-  <h2>Educação e Conscientização</h2>
-  <article>
-    <p>Acesse materiais educativos...</p>
-    <h3>Conteúdos Disponíveis</h3>
-    <ul>
-      <li>📘 Guia: Economia de água</li>
-      <li>🎥 Vídeo: Ciclo da Água</li>
-      <li>🖼️ Infográfico: Vazamentos</li>
-    </ul>
-  </article>
-</section>
+                <tbody>
+                <tr><td>01/09/2025</td><td>150</td><td>155</td><td>140</td></tr>
+                <tr><td>02/09/2025</td><td>162</td><td>158</td><td>140</td></tr>
+                <tr><td>03/09/2025</td><td>148</td><td>153</td><td>140</td></tr>
+                <tr><td>04/09/2025</td><td>172</td><td>158</td><td>140</td></tr>
+                <tr><td>05/09/2025</td><td>160</td><td>158</td><td>140</td></tr>
+                </tbody>
+            </table>
+        </article>
+    </section>
 
-<section id="pagina-registro" class="pagina">
-  <h2>Registro de Consumo de Água</h2>
-  <article>
-    <p>Insira abaixo os dados...</p>
+    <!-- Participação -->
+    <section id="pagina-participacao" class="pagina">
+        <h2>Participação da Comunidade</h2>
+        <article>
+            <p>Veja como sua vizinhança está contribuindo...</p>
+            <h3>Projetos Ativos:</h3>
 
-    <form id="form-registro">
-      <label for="data">Data:</label>
-      <input type="date" id="data" required/>
+            <ul>
+                <li>🌱 Hortas coletivas</li>
+                <li>🚿 Troca de torneiras antigas</li>
+                <li>📢 Campanhas nas escolas</li>
+            </ul>
+        </article>
+    </section>
 
-      <label for="quantidade">Litros consumidos:</label>
-      <input type="number" id="quantidade" placeholder="Ex: 145" required/>
+    <!-- Educação -->
+    <section id="pagina-educacao" class="pagina">
+        <h2>Educação e Conscientização</h2>
+        <article>
+            <p>Acesse materiais educativos...</p>
 
-      <button type="submit" class="submit-btn">Registrar</button>
-    </form>
+            <h3>Conteúdos Disponíveis</h3>
+            <ul>
+                <li>📘 Guia: Economia de água</li>
+                <li>🎥 Vídeo: Ciclo da Água</li>
+                <li>🖼️ Infográfico: Vazamentos</li>
+            </ul>
+        </article>
+    </section>
 
-    <div style="margin-top:20px;">
-      <table id="tabela-registros" class="tabela-monitoramento">
-        <thead>
-          <tr><th>Data</th><th>Consumo (litros)</th></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+    <!-- Registro -->
+    <section id="pagina-registro" class="pagina">
+        <h2>Registro de Consumo de Água</h2>
+        <article>
 
-  </article>
-</section>
+            <form id="form-registro">
+                <label for="data">Data:</label>
+                <input type="date" id="data" required/>
 
-<section id="pagina-servicos" class="pagina">
-  <h2>Acionar Serviços</h2>
-  <article>
-    <p>Solicite serviços relacionados...</p>
+                <label for="quantidade">Litros consumidos:</label>
+                <input type="number" id="quantidade" required/>
 
-    <form id="form-servico">
-      <label for="tipo-servico">Tipo de solicitação:</label>
-      <select id="tipo-servico" required>
-        <option value="">-- Selecione --</option>
-        <option>Vazamento</option>
-        <option>Interrupção no abastecimento</option>
-        <option>Consulta de fatura</option>
-        <option>Outro</option>
-      </select>
+                <button type="submit" class="submit-btn">Registrar</button>
+            </form>
 
-      <label for="descricao-servico">Descrição:</label>
-      <textarea id="descricao-servico" rows="4" placeholder="Descreva o problema..." required></textarea>
+            <table id="tabela-registros" class="tabela-monitoramento">
+                <thead>
+                <tr><th>Data</th><th>Litros</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
 
-      <button type="submit" class="submit-btn">Enviar</button>
-    </form>
-  </article>
-</section>
+        </article>
+    </section>
+
+    <!-- Serviços -->
+    <section id="pagina-servicos" class="pagina">
+        <h2>Acionar Serviços</h2>
+        <article>
+
+            <form id="form-servico">
+                <label for="tipo-servico">Tipo:</label>
+                <select id="tipo-servico" required>
+                    <option value="">-- Selecione --</option>
+                    <option>Vazamento</option>
+                    <option>Interrupção no abastecimento</option>
+                    <option>Consulta de fatura</option>
+                    <option>Outro</option>
+                </select>
+
+                <label for="descricao-servico">Descrição:</label>
+                <textarea id="descricao-servico" rows="4" required></textarea>
+
+                <button type="submit" class="submit-btn">Enviar</button>
+            </form>
+
+        </article>
+    </section>
 
 </main>
 
 <footer>
-  <p>&copy; 2025 EcoWater. Todos os direitos reservados.</p>
+    <p>&copy; 2025 EcoWater. Todos os direitos reservados.</p>
 </footer>
 
-<!-- Modal Cadastro -->
-<div id="modal-cadastro" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalCadastroTitle">
-  <div class="modal-content">
-    <button class="close-btn" aria-label="Fechar cadastro">×</button>
-    <h3 id="modalCadastroTitle">Cadastro</h3>
-    <form id="form-cadastro" novalidate>
-      <input type="text" id="nome" name="nome" placeholder="Nome completo" required />
-      <input type="email" id="emailCadastro" name="email" placeholder="E-mail" required />
-      <input type="password" id="senhaCadastro" name="senha" placeholder="Senha" required minlength="6" />
-      <button type="submit" class="submit-btn">Cadastrar</button>
-    </form>
-  </div>
+<!-- Modals -->
+<div id="modal-cadastro" class="modal">
+    <div class="modal-content">
+        <button class="close-btn">×</button>
+        <h3>Cadastro</h3>
+
+        <form id="form-cadastro">
+            <input type="text" id="nome" placeholder="Nome completo" required />
+            <input type="email" id="emailCadastro" placeholder="E-mail" required />
+            <input type="password" id="senhaCadastro" placeholder="Senha" required minlength="6" />
+            <button class="submit-btn">Cadastrar</button>
+        </form>
+
+    </div>
 </div>
 
-<!-- Modal Login -->
-<div id="modal-login" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalLoginTitle">
-  <div class="modal-content">
-    <button class="close-btn" aria-label="Fechar login">×</button>
-    <h3 id="modalLoginTitle">Login</h3>
-    <form id="form-login" novalidate>
-      <input type="email" id="emailLogin" name="emailLogin" placeholder="E-mail" required />
-      <input type="password" id="senhaLogin" name="senhaLogin" placeholder="Senha" required />
-      <button type="submit" class="submit-btn">Entrar</button>
-    </form>
-  </div>
+<div id="modal-login" class="modal">
+    <div class="modal-content">
+        <button class="close-btn">×</button>
+        <h3>Login</h3>
+
+        <form id="form-login">
+            <input type="email" id="emailLogin" placeholder="E-mail" required />
+            <input type="password" id="senhaLogin" placeholder="Senha" required />
+            <button class="submit-btn">Entrar</button>
+        </form>
+    </div>
 </div>
 
-<div id="feedback-message" role="alert" aria-live="polite"></div>
+<div id="feedback-message"></div>
 
 <script src="EcoWater.js"></script>
-
 </body>
 </html>
