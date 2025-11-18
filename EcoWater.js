@@ -13,21 +13,6 @@ const closeBtns = document.querySelectorAll('.close-btn');
 
 const formCadastro = document.getElementById('form-cadastro');
 const formLogin = document.getElementById('form-login');
-// Seleção dos elementos
-const menuToggleBtn = document.getElementById('menu-toggle');
-const menuCloseBtn = document.getElementById('menu-close');
-const menu = document.getElementById('menu');
-
-const btnCadastrar = document.getElementById('btn-cadastrar');
-const btnLogin = document.getElementById('btn-login');
-
-const modalCadastro = document.getElementById('modal-cadastro');
-const modalLogin = document.getElementById('modal-login');
-
-const closeBtns = document.querySelectorAll('.close-btn');
-
-const formCadastro = document.getElementById('form-cadastro');
-const formLogin = document.getElementById('form-login');
 
 const feedbackMessage = document.getElementById('feedback-message');
 
@@ -119,7 +104,7 @@ formCadastro?.addEventListener('submit', (e) => {
 
   const nome = document.getElementById('nome').value;
   localStorage.setItem('ecoWaterUsuario', nome);
-  mostrarFeedback(`Bem-vindo, ${nome.split(' ')[0]}!`);
+  mostrarFeedback(Bem-vindo, ${nome.split(' ')[0]}!);
 
   formCadastro.reset();
   fecharModal(modalCadastro);
@@ -193,10 +178,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   dadosFicticios.forEach(registro => {
     const linha = document.createElement('tr');
-    linha.innerHTML = `<td>${registro.data}</td><td>${registro.quantidade} L</td>`;
+    linha.innerHTML = <td>${registro.data}</td><td>${registro.quantidade} L</td>;
     tabelaRegistros.appendChild(linha);
   });
 });
+
 
 formRegistro?.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -211,7 +197,7 @@ formRegistro?.addEventListener('submit', (e) => {
 
   if (tabelaRegistros) {
     const novaLinha = document.createElement('tr');
-    novaLinha.innerHTML = `<td>${data}</td><td>${quantidade} L</td>`;
+    novaLinha.innerHTML = <td>${data}</td><td>${quantidade} L</td>;
     tabelaRegistros.appendChild(novaLinha);
   }
 
@@ -233,6 +219,6 @@ formServico?.addEventListener('submit', (e) => {
     return;
   }
 
-  mostrarFeedback(`Solicitação de "${tipo}" enviada com sucesso!`);
+  mostrarFeedback(Solicitação de "${tipo}" enviada com sucesso!);
   formServico.reset();
 });
