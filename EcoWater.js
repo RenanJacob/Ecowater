@@ -200,3 +200,54 @@ formServico?.addEventListener("submit", (e) => {
   mostrarFeedback(`Solicitação de "${tipo}" enviada com sucesso!`);
   formServico.reset();
 });
+
+
+
+
+
+
+// ===============================
+// FORMULÁRIO PARA MULHERES
+// ===============================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const formMulheres = document.getElementById("form-mulheres");
+
+  if (formMulheres) {
+    formMulheres.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const nome = document.getElementById("nomeMulher").value.trim();
+      const email = document.getElementById("emailMulher").value.trim();
+      const mensagem = document.getElementById("mensagemMulher").value.trim();
+
+      if (!nome || !email || !mensagem) {
+        mostrarFeedback("Preencha todos os campos!", true);
+        return;
+      }
+
+      // Aqui você pode futuramente enviar para seu banco ou API
+      console.log("Formulário enviado (mulheres):", {
+        nome,
+        email,
+        mensagem
+      });
+
+      mostrarFeedback("Mensagem enviada com sucesso!", false);
+
+      formMulheres.reset();
+    });
+  }
+});
+
+// Função reaproveitável para feedback
+function mostrarFeedback(texto, erro = false) {
+  const box = document.getElementById("feedback-message");
+  box.textContent = texto;
+  box.style.backgroundColor = erro ? "#c62828" : "#1565c0";
+  box.classList.add("show");
+
+  setTimeout(() => {
+    box.classList.remove("show");
+  }, 3000);
+}
