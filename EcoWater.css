@@ -538,3 +538,41 @@ nav::-webkit-scrollbar-thumb {
 #tabela-registros {
   margin-top: 20px;
 }
+
+
+
+
+
+
+
+
+/* FORMULÁRIO - PÁGINA MULHERES */
+#pagina-mulheres form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+#pagina-mulheres form label {
+  font-weight: 600;
+  color: #1565c0;
+}
+
+#pagina-mulheres input,
+#pagina-mulheres textarea {
+  border: 1.5px solid #bbb;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+#pagina-mulheres input:focus,
+#pagina-mulheres textarea:focus {
+  border-color: #1565c0;
+  outline: none;
+}
