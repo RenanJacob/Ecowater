@@ -24,19 +24,17 @@ const btnProximo = document.querySelector('.carrossel-btn.proximo');
 const btnAnterior = document.querySelector('.carrossel-btn.anterior');
 let slideAtual = 0;
 
-// Menu
+/* ---------------- MENU ---------------- */
 function abrirMenu() {
   menu.classList.add('show');
   menu.setAttribute('aria-hidden', 'false');
   menuToggleBtn.setAttribute('aria-expanded', 'true');
-  menuToggleBtn.setAttribute('aria-label', 'Fechar menu');
 }
 
 function fecharMenu() {
   menu.classList.remove('show');
   menu.setAttribute('aria-hidden', 'true');
   menuToggleBtn.setAttribute('aria-expanded', 'false');
-  menuToggleBtn.setAttribute('aria-label', 'Abrir menu');
 }
 
 menuToggleBtn.addEventListener('click', () => {
@@ -45,10 +43,9 @@ menuToggleBtn.addEventListener('click', () => {
 
 menuCloseBtn.addEventListener('click', fecharMenu);
 
-// Modais
+/* --------------- MODAIS ---------------- */
 function abrirModal(modal) {
   modal.classList.add('show');
-  modal.focus();
   document.body.style.overflow = 'hidden';
 }
 
@@ -58,9 +55,7 @@ function fecharModal(modal) {
 }
 
 closeBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    fecharModal(btn.closest('.modal'));
-  });
+  btn.addEventListener('click', () => fecharModal(btn.closest('.modal')));
 });
 
 btnCadastrar.addEventListener('click', () => abrirModal(modalCadastro));
@@ -68,70 +63,66 @@ btnLogin.addEventListener('click', () => abrirModal(modalLogin));
 
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    if (modalCadastro.classList.contains('show')) fecharModal(modalCadastro);
-    if (modalLogin.classList.contains('show')) fecharModal(modalLogin);
-    if (menu.classList.contains('show')) fecharMenu();
+    fecharModal(modalCadastro);
+    fecharModal(modalLogin);
+    fecharMenu();
   }
 });
 
-[modalCadastro, modalLogin].forEach(modal => {
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) fecharModal(modal);
-  });
-});
-
-// Feedback
-function mostrarFeedback(mensagem) {
-  feedbackMessage.textContent = mensagem;
+/* ------ FEEDBACK ------ */
+function mostrarFeedback(msg) {
+  feedbackMessage.textContent = msg;
   feedbackMessage.classList.add('show');
-  setTimeout(() => feedbackMessage.classList.remove('show'), 3500);
+
+  setTimeout(() => {
+    feedbackMessage.classList.remove('show');
+  }, 3500);
 }
 
-// Formulários
+/* ------ CADASTRO ------ */
 formCadastro?.addEventListener('submit', (e) => {
   e.preventDefault();
 
   if (!formCadastro.checkValidity()) {
-    mostrarFeedback('Preencha todos os campos corretamente no cadastro.');
+    mostrarFeedback("Preencha todos os campos corretamente.");
     return;
   }
 
   const nome = document.getElementById('nome').value;
+
   localStorage.setItem('ecoWaterUsuario', nome);
 
-  mostrarFeedback(`Bem-vindo, ${nome.split(' ')[0]}!`);
-
+  mostrarFeedback(`Bem-vindo, ${nome.split(" ")[0]}!`);
   formCadastro.reset();
   fecharModal(modalCadastro);
 });
 
+/* ------ LOGIN ------ */
 formLogin?.addEventListener('submit', (e) => {
   e.preventDefault();
-  if (!formLogin.checkValidity()) {
-    mostrarFeedback('Preencha todos os campos corretamente no login.');
-    return;
-  }
-  mostrarFeedback('Login realizado com sucesso!');
+
+  mostrarFeedback("Login realizado com sucesso!");
   formLogin.reset();
   fecharModal(modalLogin);
 });
 
-// Navegação de páginas
+/* ------ MUDANÇA DE PÁGINA ------ */
 linksMenu.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
 
-    const destino = link.getAttribute('href').replace('#', 'pagina-');
-    paginas.forEach(pagina => pagina.classList.remove('ativa'));
+    const destino = link.getAttribute('href').replace("#", "pagina-");
 
-    document.getElementById(destino)?.classList.add('ativa');
+    paginas.forEach(p => p.classList.remove('ativa'));
+    document.getElementById(destino).classList.add('ativa');
+
     fecharMenu();
   });
 });
 
-// Carrossel
+/* ------ CARROSSEL ------ */
 function mostrarSlide(index) {
-  slides.forEach(slide => slide.classList.remove('ativo'));
+  slides.forEach(s => s.classList.remove('ativo'));
   slides[index].classList.add('ativo');
 }
 
@@ -150,60 +141,59 @@ setInterval(() => {
   mostrarSlide(slideAtual);
 }, 7000);
 
-// Registro de Consumo
+/* ------ REGISTRO DE CONSUMO ------ */
 const formRegistro = document.getElementById('form-registro');
-const tabelaRegistros = document.getElementById('tabela-registros')?.querySelector('tbody');
+const tabelaRegistros = document.querySelector('#tabela-registros tbody');
 
 const dadosFicticios = [
-  { data: '2025-09-01', quantidade: 2.3 },
-  { data: '2025-09-02', quantidade: 1.8 },
-  { data: '2025-09-03', quantidade: 2.0 },
-  { data: '2025-09-04', quantidade: 2.5 },
-  { data: '2025-09-05', quantidade: 1.9 },
-  { data: '2025-09-06', quantidade: 2.1 },
-  { data: '2025-09-07', quantidade: 2.4 }
+  { data: "2025-09-01", quantidade: 2.3 },
+  { data: "2025-09-02", quantidade: 1.8 },
+  { data: "2025-09-03", quantidade: 2.0 },
+  { data: "2025-09-04", quantidade: 2.5 },
+  { data: "2025-09-05", quantidade: 1.9 },
+  { data: "2025-09-06", quantidade: 2.1 },
+  { data: "2025-09-07", quantidade: 2.4 }
 ];
 
-document.addEventListener('DOMContentLoaded', () => {
-  if (!tabelaRegistros) return;
-
-  dadosFicticios.forEach(registro => {
-    const linha = document.createElement('tr');
-    linha.innerHTML = `<td>${registro.data}</td><td>${registro.quantidade} L</td>`;
-    tabelaRegistros.appendChild(linha);
+// Preencher tabela com dados de exemplo
+document.addEventListener("DOMContentLoaded", () => {
+  dadosFicticios.forEach(reg => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${reg.data}</td><td>${reg.quantidade} L</td>`;
+    tabelaRegistros.appendChild(tr);
   });
 });
 
-formRegistro?.addEventListener('submit', (e) => {
+formRegistro?.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const data = document.getElementById('data').value;
-  const quantidade = document.getElementById('quantidade').value;
+  const data = document.getElementById("data").value;
+  const quantidade = document.getElementById("quantidade").value;
 
   if (!data || !quantidade) {
-    mostrarFeedback('Preencha todos os campos para registrar.');
+    mostrarFeedback("Preencha todos os campos.");
     return;
   }
 
-  const novaLinha = document.createElement('tr');
-  novaLinha.innerHTML = `<td>${data}</td><td>${quantidade} L</td>`;
-  tabelaRegistros.appendChild(novaLinha);
+  const tr = document.createElement("tr");
+  tr.innerHTML = `<td>${data}</td><td>${quantidade} L</td>`;
+  tabelaRegistros.appendChild(tr);
 
   formRegistro.reset();
-  mostrarFeedback('Consumo registrado com sucesso!');
+  mostrarFeedback("Consumo registrado!");
 });
 
-// Formulário de Serviços
-const formServico = document.getElementById('form-servico');
+/* ------ SERVIÇOS ------ */
+const formServico = document.getElementById("form-servico");
 
-formServico?.addEventListener('submit', (e) => {
+formServico?.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const tipo = document.getElementById('tipo-servico').value;
-  const descricao = document.getElementById('descricao-servico').value;
+  const tipo = document.getElementById("tipo-servico").value;
+  const descricao = document.getElementById("descricao-servico").value;
 
   if (!tipo || !descricao.trim()) {
-    mostrarFeedback('Preencha todos os campos para enviar a solicitação.');
+    mostrarFeedback("Preencha todos os campos.");
     return;
   }
 
