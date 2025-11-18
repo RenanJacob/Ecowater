@@ -13,6 +13,21 @@ const closeBtns = document.querySelectorAll('.close-btn');
 
 const formCadastro = document.getElementById('form-cadastro');
 const formLogin = document.getElementById('form-login');
+// Seleção dos elementos
+const menuToggleBtn = document.getElementById('menu-toggle');
+const menuCloseBtn = document.getElementById('menu-close');
+const menu = document.getElementById('menu');
+
+const btnCadastrar = document.getElementById('btn-cadastrar');
+const btnLogin = document.getElementById('btn-login');
+
+const modalCadastro = document.getElementById('modal-cadastro');
+const modalLogin = document.getElementById('modal-login');
+
+const closeBtns = document.querySelectorAll('.close-btn');
+
+const formCadastro = document.getElementById('form-cadastro');
+const formLogin = document.getElementById('form-login');
 
 const feedbackMessage = document.getElementById('feedback-message');
 
@@ -182,7 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
     tabelaRegistros.appendChild(linha);
   });
 });
-
 
 formRegistro?.addEventListener('submit', (e) => {
   e.preventDefault();
