@@ -40,11 +40,7 @@ function fecharMenu() {
 }
 
 menuToggleBtn.addEventListener('click', () => {
-  if (menu.classList.contains('show')) {
-    fecharMenu();
-  } else {
-    abrirMenu();
-  }
+  menu.classList.contains('show') ? fecharMenu() : abrirMenu();
 });
 
 menuCloseBtn.addEventListener('click', fecharMenu);
@@ -63,8 +59,7 @@ function fecharModal(modal) {
 
 closeBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    const modal = btn.closest('.modal');
-    fecharModal(modal);
+    fecharModal(btn.closest('.modal'));
   });
 });
 
@@ -89,14 +84,13 @@ window.addEventListener('keydown', (e) => {
 function mostrarFeedback(mensagem) {
   feedbackMessage.textContent = mensagem;
   feedbackMessage.classList.add('show');
-  setTimeout(() => {
-    feedbackMessage.classList.remove('show');
-  }, 3500);
+  setTimeout(() => feedbackMessage.classList.remove('show'), 3500);
 }
 
 // Formulários
 formCadastro?.addEventListener('submit', (e) => {
   e.preventDefault();
+
   if (!formCadastro.checkValidity()) {
     mostrarFeedback('Preencha todos os campos corretamente no cadastro.');
     return;
@@ -104,7 +98,8 @@ formCadastro?.addEventListener('submit', (e) => {
 
   const nome = document.getElementById('nome').value;
   localStorage.setItem('ecoWaterUsuario', nome);
-  mostrarFeedback(Bem-vindo, ${nome.split(' ')[0]}!);
+
+  mostrarFeedback(`Bem-vindo, ${nome.split(' ')[0]}!`);
 
   formCadastro.reset();
   fecharModal(modalCadastro);
@@ -125,13 +120,11 @@ formLogin?.addEventListener('submit', (e) => {
 linksMenu.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    const destino = link.getAttribute('href').replace('#', 'pagina-');
 
+    const destino = link.getAttribute('href').replace('#', 'pagina-');
     paginas.forEach(pagina => pagina.classList.remove('ativa'));
 
-    const novaPagina = document.getElementById(destino);
-    if (novaPagina) novaPagina.classList.add('ativa');
-
+    document.getElementById(destino)?.classList.add('ativa');
     fecharMenu();
   });
 });
@@ -157,11 +150,10 @@ setInterval(() => {
   mostrarSlide(slideAtual);
 }, 7000);
 
-// Registro de Consumo de Água
+// Registro de Consumo
 const formRegistro = document.getElementById('form-registro');
 const tabelaRegistros = document.getElementById('tabela-registros')?.querySelector('tbody');
 
-// Dados fictícios de consumo
 const dadosFicticios = [
   { data: '2025-09-01', quantidade: 2.3 },
   { data: '2025-09-02', quantidade: 1.8 },
@@ -172,17 +164,15 @@ const dadosFicticios = [
   { data: '2025-09-07', quantidade: 2.4 }
 ];
 
-// Preenche tabela ao carregar
 document.addEventListener('DOMContentLoaded', () => {
   if (!tabelaRegistros) return;
 
   dadosFicticios.forEach(registro => {
     const linha = document.createElement('tr');
-    linha.innerHTML = <td>${registro.data}</td><td>${registro.quantidade} L</td>;
+    linha.innerHTML = `<td>${registro.data}</td><td>${registro.quantidade} L</td>`;
     tabelaRegistros.appendChild(linha);
   });
 });
-
 
 formRegistro?.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -195,11 +185,9 @@ formRegistro?.addEventListener('submit', (e) => {
     return;
   }
 
-  if (tabelaRegistros) {
-    const novaLinha = document.createElement('tr');
-    novaLinha.innerHTML = <td>${data}</td><td>${quantidade} L</td>;
-    tabelaRegistros.appendChild(novaLinha);
-  }
+  const novaLinha = document.createElement('tr');
+  novaLinha.innerHTML = `<td>${data}</td><td>${quantidade} L</td>`;
+  tabelaRegistros.appendChild(novaLinha);
 
   formRegistro.reset();
   mostrarFeedback('Consumo registrado com sucesso!');
@@ -219,6 +207,6 @@ formServico?.addEventListener('submit', (e) => {
     return;
   }
 
-  mostrarFeedback(Solicitação de "${tipo}" enviada com sucesso!);
+  mostrarFeedback(`Solicitação de "${tipo}" enviada com sucesso!`);
   formServico.reset();
 });
