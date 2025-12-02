@@ -1,3 +1,7 @@
+// =======================================================
+// EcoWater.js - Código Completo e Corrigido
+// =======================================================
+
 // Seleção dos elementos
 const menuToggleBtn = document.getElementById('menu-toggle');
 const menuCloseBtn = document.getElementById('menu-close');
@@ -24,258 +28,297 @@ const btnProximo = document.querySelector('.carrossel-btn.proximo');
 const btnAnterior = document.querySelector('.carrossel-btn.anterior');
 let slideAtual = 0;
 
+/* ------ FUNÇÃO FEEDBACK CENTRALIZADA (Corrigida) ------ */
+function mostrarFeedback(texto, erro = false) {
+    const box = document.getElementById("feedback-message");
+    box.textContent = texto;
+    // O seu CSS deve lidar com a cor, mas forçamos aqui para a mensagem de erro.
+    box.style.backgroundColor = erro ? "#c62828" : "#1565c0"; 
+    box.classList.add("show");
+    setTimeout(() => {
+        box.classList.remove("show");
+        // Remove a cor customizada após sumir
+        box.style.backgroundColor = "#1565c0"; 
+    }, 3500);
+}
+
+
 /* ---------------- MENU ---------------- */
 function abrirMenu() {
-  menu.classList.add('show');
-  menu.setAttribute('aria-hidden', 'false');
-  menuToggleBtn.setAttribute('aria-expanded', 'true');
+    menu.classList.add('show');
+    menu.setAttribute('aria-hidden', 'false');
+    menuToggleBtn.setAttribute('aria-expanded', 'true');
 }
 
 function fecharMenu() {
-  menu.classList.remove('show');
-  menu.setAttribute('aria-hidden', 'true');
-  menuToggleBtn.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('show');
+    menu.setAttribute('aria-hidden', 'true');
+    menuToggleBtn.setAttribute('aria-expanded', 'false');
 }
 
 if (menuToggleBtn && menu) {
-  menuToggleBtn.addEventListener('click', () => {
-    menu.classList.contains('show') ? fecharMenu() : abrirMenu();
-  });
+    menuToggleBtn.addEventListener('click', () => {
+        menu.classList.contains('show') ? fecharMenu() : abrirMenu();
+    });
 }
 
 if (menuCloseBtn && menu) {
-  menuCloseBtn.addEventListener('click', fecharMenu);
+    menuCloseBtn.addEventListener('click', fecharMenu);
 }
-
-menuCloseBtn.addEventListener('click', fecharMenu);
 
 /* --------------- MODAIS ---------------- */
 function abrirModal(modal) {
-  modal.classList.add('show');
-  document.body.style.overflow = 'hidden';
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
 }
 
 function fecharModal(modal) {
-  modal.classList.remove('show');
-  document.body.style.overflow = '';
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
 }
 
 closeBtns.forEach(btn => {
-  btn.addEventListener('click', () => fecharModal(btn.closest('.modal')));
+    btn.addEventListener('click', () => fecharModal(btn.closest('.modal')));
 });
 
 btnCadastrar.addEventListener('click', () => abrirModal(modalCadastro));
 btnLogin.addEventListener('click', () => abrirModal(modalLogin));
 
 window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    fecharModal(modalCadastro);
-    fecharModal(modalLogin);
-    fecharMenu();
-  }
+    if (e.key === 'Escape') {
+        fecharModal(modalCadastro);
+        fecharModal(modalLogin);
+        fecharMenu();
+    }
 });
-
-/* ------ FEEDBACK ------ */
-function mostrarFeedback(msg) {
-  feedbackMessage.textContent = msg;
-  feedbackMessage.classList.add('show');
-  setTimeout(() => {
-    feedbackMessage.classList.remove('show');
-  }, 3500);
-}
 
 /* ------ CADASTRO ------ */
 formCadastro?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  if (!formCadastro.checkValidity()) {
-    mostrarFeedback("Preencha todos os campos corretamente.");
-    return;
-  }
-  const nome = document.getElementById('nome').value;
-  localStorage.setItem('ecoWaterUsuario', nome);
-mostrarFeedback(`Bem-vindo, ${nome.split(" ")[0]}!`);
-  li.textContent = `${i.nome ? i.nome + ": " : ""}${i.texto}`;
-  formCadastro.reset();
-  fecharModal(modalCadastro);
+    e.preventDefault();
+    if (!formCadastro.checkValidity()) {
+        mostrarFeedback("Preencha todos os campos corretamente.", true);
+        return;
+    }
+    const nome = document.getElementById('nome').value;
+    localStorage.setItem('ecoWaterUsuario', nome);
+    mostrarFeedback(`Bem-vindo, ${nome.split(" ")[0]}!`);
+    formCadastro.reset();
+    fecharModal(modalCadastro);
 });
 
 /* ------ LOGIN ------ */
 formLogin?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  mostrarFeedback("Login realizado com sucesso!");
-  formLogin.reset();
-  fecharModal(modalLogin);
+    e.preventDefault();
+    mostrarFeedback("Login realizado com sucesso!");
+    formLogin.reset();
+    fecharModal(modalLogin);
 });
 
-/* ------ MUDANÇA DE PÁGINA (CORRIGIDO) ------ */
+/* ------ MUDANÇA DE PÁGINA (Corrigido para mapear links -> IDs) ------ */
 linksMenu.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    let alvo = link.getAttribute("href");
-    
-    // Converte o link curto do menu para o ID longo da página (se necessário)
-    if (alvo !== "#pagina-inicial" && alvo.startsWith("#")) {
-        alvo = alvo.replace("#", "#pagina-");
-    }
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        let alvo = link.getAttribute("href");
 
-    // Exceção que você já tinha:
-    if (alvo === "#participacao") {
-      alvo = "#participacao-comunidade";
-    }
+        // Lógica de mapeamento de IDs de link para IDs de seção (Se necessário)
+        // Se você usou a Opção A (ajustar todos os HREFs no HTML), esta lógica se torna mais simples:
+        
+        // Exceção que você já tinha:
+        if (alvo === "#participacao") {
+          alvo = "#participacao-comunidade";
+        } else if (alvo === "#inicial") {
+          alvo = "#pagina-inicial";
+        } else if (alvo === "#monitoramento") {
+          alvo = "#pagina-monitoramento";
+        } else if (alvo === "#educacao") {
+          alvo = "#pagina-educacao";
+        } else if (alvo === "#registro") {
+          alvo = "#pagina-registro";
+        } else if (alvo === "#servicos") {
+          alvo = "#pagina-servicos";
+        }
+        
+        const paginaAlvo = document.querySelector(alvo);
+        
+        if (!paginaAlvo) {
+            console.error("❌ ERRO: página não encontrada:", alvo);
+            mostrarFeedback("Erro ao carregar seção.", true);
+            return; 
+        }
 
-    const paginaAlvo = document.querySelector(alvo);
-    // ... restante do código
-    
-    // remove ativa de todas
-    paginas.forEach(p => p.classList.remove("ativa"));
-    // adiciona ativa na correta
-    paginaAlvo.classList.add("ativa");
-    fecharMenu();
-  });
+        // remove ativa de todas
+        paginas.forEach(p => p.classList.remove("ativa"));
+        // adiciona ativa na correta
+        paginaAlvo.classList.add("ativa");
+        fecharMenu();
+    });
 });
 
 /* ------ CARROSSEL ------ */
 function mostrarSlide(index) {
-  slides.forEach(s => s.classList.remove('ativo'));
-  slides[index].classList.add('ativo');
+    slides.forEach(s => s.classList.remove('ativo'));
+    if (slides[index]) {
+       slides[index].classList.add('ativo');
+    }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    if (slides.length > 0) {
+        mostrarSlide(slideAtual); // Garante que o primeiro slide apareça
+    }
+});
+
+
 btnProximo?.addEventListener('click', () => {
-  slideAtual = (slideAtual + 1) % slides.length;
-  mostrarSlide(slideAtual);
+    slideAtual = (slideAtual + 1) % slides.length;
+    mostrarSlide(slideAtual);
 });
 
 btnAnterior?.addEventListener('click', () => {
-  slideAtual = (slideAtual - 1 + slides.length) % slides.length;
-  mostrarSlide(slideAtual);
+    slideAtual = (slideAtual - 1 + slides.length) % slides.length;
+    mostrarSlide(slideAtual);
 });
 
-setInterval(() => {
-  slideAtual = (slideAtual + 1) % slides.length;
-  mostrarSlide(slideAtual);
-}, 7000);
+if (slides.length > 1) {
+    setInterval(() => {
+        slideAtual = (slideAtual + 1) % slides.length;
+        mostrarSlide(slideAtual);
+    }, 7000);
+}
+
 
 /* ------ REGISTRO DE CONSUMO ------ */
 const formRegistro = document.getElementById('form-registro');
 const tabelaRegistros = document.querySelector('#tabela-registros tbody');
 
 const dadosFicticios = [
-  { data: "2025-09-01", quantidade: 2.3 },
-  { data: "2025-09-02", quantidade: 1.8 },
-  { data: "2025-09-03", quantidade: 2.0 },
-  { data: "2025-09-04", quantidade: 2.5 },
-  { data: "2025-09-05", quantidade: 1.9 },
-  { data: "2025-09-06", quantidade: 2.1 },
-  { data: "2025-09-07", quantidade: 2.4 }
+    { data: "2025-09-01", quantidade: 150 },
+    { data: "2025-09-02", quantidade: 162 },
+    { data: "2025-09-03", quantidade: 148 },
+    { data: "2025-09-04", quantidade: 172 },
+    { data: "2025-09-05", quantidade: 160 },
 ];
 
-// Preencher tabela com dados de exemplo
+// Preencher tabela com dados de exemplo (tabela de Monitoramento)
 document.addEventListener("DOMContentLoaded", () => {
-  dadosFicticios.forEach(reg => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${reg.data}</td><td>${reg.quantidade} L</td>`;
-    tabelaRegistros.appendChild(tr);
-  });
+    const tabelaMonitoramento = document.querySelector('#pagina-monitoramento .tabela-monitoramento tbody');
+    // A tabela de monitoramento já tem dados no HTML, mas se precisasse ser preenchida aqui:
+    // dadosFicticios.forEach(reg => { /* ... */ });
+    
+    // Preencher a tabela VAZIA de Registros (que aceita novos dados)
+    dadosFicticios.forEach(reg => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${reg.data}</td><td>${reg.quantidade} L</td>`;
+        tabelaRegistros?.appendChild(tr);
+    });
 });
 
+formRegistro?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = document.getElementById("data").value;
+    const quantidade = document.getElementById("quantidade").value;
+    if (!data || !quantidade) {
+        mostrarFeedback("Preencha todos os campos.");
+        return;
+    }
+    const tr = document.createElement("tr");
+    // 💡 CORRIGIDO: Uso correto de template literal (crase `)
+    tr.innerHTML = `<td>${data}</td><td>${quantidade} L</td>`; 
+    tabelaRegistros.appendChild(tr);
+    formRegistro.reset();
+    mostrarFeedback("Consumo registrado!");
+});
 
 /* ------ SERVIÇOS ------ */
 const formServico = document.getElementById("form-servico");
 formServico?.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const tipo = document.getElementById("tipo-servico").value;
-  const descricao = document.getElementById("descricao-servico").value;
-  if (!tipo || !descricao.trim()) {
-    mostrarFeedback("Preencha todos os campos.");
-    return;
-  }
-  mostrarFeedback(`Solicitação de "${tipo}" enviada com sucesso!`);
-  formServico.reset();
-});
-
-// ===============================
-// FORMULÁRIO PARA MULHERES
-// ===============================
-document.addEventListener("DOMContentLoaded", () => {
-  const formMulheres = document.getElementById("form-mulheres");
-  if (formMulheres) {
-    formMulheres.addEventListener("submit", function (event) {
-      event.preventDefault();
-      const nome = document.getElementById("nomeMulher").value.trim();
-      const email = document.getElementById("emailMulher").value.trim();
-      const mensagem = document.getElementById("mensagemMulher").value.trim();
-      if (!nome || !email || !mensagem) {
-        mostrarFeedback("Preencha todos os campos!", true);
+    e.preventDefault();
+    const tipo = document.getElementById("tipo-servico").value;
+    const descricao = document.getElementById("descricao-servico").value;
+    if (!tipo || !descricao.trim()) {
+        mostrarFeedback("Preencha todos os campos.");
         return;
-      }
-      // Aqui você pode futuramente enviar para seu banco ou API
-      console.log("Formulário enviado (mulheres):", { nome, email, mensagem });
-      mostrarFeedback("Mensagem enviada com sucesso!", false);
-      formMulheres.reset();
-    });
-  }
+    }
+    mostrarFeedback(`Solicitação de "${tipo}" enviada com sucesso!`);
+    formServico.reset();
 });
 
-// Função reaproveitável para feedback
-function mostrarFeedback(texto, erro = false) {
-  const box = document.getElementById("feedback-message");
-  box.textContent = texto;
-  box.style.backgroundColor = erro ? "#c62828" : "#1565c0";
-  box.classList.add("show");
-  setTimeout(() => {
-    box.classList.remove("show");
-  }, 3000);
-}
+/* ------ FORMULÁRIO PARA MULHERES ------ */
+document.addEventListener("DOMContentLoaded", () => {
+    const formMulheres = document.getElementById("form-mulheres");
+    if (formMulheres) {
+        formMulheres.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const nome = document.getElementById("nomeMulher").value.trim();
+            const email = document.getElementById("emailMulher").value.trim();
+            const mensagem = document.getElementById("mensagemMulher").value.trim();
+            if (!nome || !email || !mensagem) {
+                mostrarFeedback("Preencha todos os campos!", true);
+                return;
+            }
+            console.log("Formulário enviado (mulheres):", { nome, email, mensagem });
+            mostrarFeedback("Mensagem enviada com sucesso!", false);
+            formMulheres.reset();
+        });
+    }
+});
+
 
 // ===================================================================
-// PARTICIPAÇÃO DA COMUNIDADE (VERSÃO ISOLADA E À PROVA DE ERROS)
+// PARTICIPAÇÃO DA COMUNIDADE (REVISADO E FUNCIONAL)
 // ===================================================================
 document.addEventListener("DOMContentLoaded", () => {
     const formIdeia = document.getElementById("form-ideia");
-    const listaIdeias = document.getElementById("lista-ideias");
-    // Se o HTML ainda não tiver a lista, criamos dinamicamente sem quebrar nada
-    if (!listaIdeias) {
-        console.warn("⚠ A lista UL de ideias não existe no HTML. Criando agora...");
-        const novaLista = document.createElement("ul");
-        novaLista.id = "lista-ideias";
-        formIdeia.insertAdjacentElement("afterend", novaLista);
-    }
-    const lista = document.getElementById("lista-ideias");
-    // Carregar do localStorage sem travar o JS
-    let ideiasSalvas;
+    const lista = document.getElementById("lista-ideias"); // Usando o novo ID do HTML
+
+    // Carregar ideias do localStorage
+    let ideiasSalvas = [];
     try {
         ideiasSalvas = JSON.parse(localStorage.getItem("ecoWaterIdeias")) || [];
-    } catch {
-        ideiasSalvas = [];
+    } catch (e) {
+        console.error("Erro ao carregar ideias do localStorage:", e);
     }
+
+    // Função para renderizar a lista no HTML
     function atualizarLista() {
+        if (!lista) return; // Se a lista não existir, encerra
         lista.innerHTML = "";
         ideiasSalvas.forEach(i => {
             const li = document.createElement("li");
-            li.textContent = `${i.nome ? i.nome + ": " : ""}${i.texto}`;
+            // Formatação: Nome em negrito se existir
+            li.innerHTML = `
+                ${i.nome ? `<strong>${i.nome}:</strong> ` : ''}
+                ${i.texto}
+            `;
             lista.appendChild(li);
         });
     }
+
+    // Renderiza a lista inicial
     atualizarLista();
+
     if (formIdeia) {
         formIdeia.addEventListener("submit", (e) => {
             e.preventDefault();
             const nome = document.getElementById("nomeIdeia").value.trim();
             const texto = document.getElementById("textoIdeia").value.trim();
+
             if (!texto) {
-                mostrarFeedback("Digite uma ideia!");
+                mostrarFeedback("Digite sua ideia!", true);
                 return;
             }
-            ideiasSalvas.push({ nome, texto });
+
+            // Adiciona nova ideia
+            ideiasSalvas.unshift({ nome, texto }); // unshift: adiciona no início
             localStorage.setItem("ecoWaterIdeias", JSON.stringify(ideiasSalvas));
+
+            // Atualiza o display e limpa o formulário
             atualizarLista();
             formIdeia.reset();
-            mostrarFeedback("Ideia enviada!");
+            mostrarFeedback("Ideia enviada! Obrigado pela sua contribuição.");
         });
     }
 });
-
-
 
 
 
