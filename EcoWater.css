@@ -578,13 +578,60 @@ nav::-webkit-scrollbar-thumb {
 }
 
 
+
+
+
+
+
+/* ... (Seu CSS anterior) ... */
+
+/* Estilos para a seção de Participação da Comunidade */
+
 .form-bloco {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-width: 450px;
+  gap: 15px; /* Aumentei um pouco para melhor espaçamento */
+  max-width: 500px;
+  padding: 20px;
+  background: #fcfcfc;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
 }
 
+.form-bloco input[type="text"],
+.form-bloco textarea {
+  padding: 12px;
+  border: 1.5px solid #bbb;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  transition: border-color 0.3s;
+}
+
+.form-bloco input[type="text"]:focus,
+.form-bloco textarea:focus {
+  border-color: #1565c0;
+  outline: none;
+}
+
+.form-bloco button[type="submit"] {
+  padding: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  background-color: #4caf50; /* Cor verde para ação de comunidade */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-bloco button[type="submit"]:hover {
+  background-color: #388e3c;
+}
+
+/* Estilos para a lista de ideias */
 .lista-ideias {
   list-style: none;
   padding: 0;
@@ -592,9 +639,19 @@ nav::-webkit-scrollbar-thumb {
 }
 
 .lista-ideias li {
-  background: #f1f1f1;
-  padding: 12px;
-  margin-bottom: 10px;
+  background: #e3f2fd; /* Fundo azul claro para destaque */
+  color: #333;
+  padding: 15px;
+  margin-bottom: 12px;
   border-radius: 8px;
-  border-left: 4px solid #2196f3;
+  border-left: 5px solid #1565c0; /* Linha azul destacada */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  font-size: 1.05rem;
+  line-height: 1.4;
 }
+
+.lista-ideias li strong {
+    color: #0d47a1;
+}
+
+/* FIM dos estilos da Comunidade */
