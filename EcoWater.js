@@ -107,20 +107,25 @@ formLogin?.addEventListener('submit', (e) => {
   fecharModal(modalLogin);
 });
 
-/* ------ MUDANÇA DE PÁGINA ------ */
+/* ------ MUDANÇA DE PÁGINA (CORRIGIDO) ------ */
 linksMenu.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
     let alvo = link.getAttribute("href");
-    // 🔥 Correção específica do seu site:
+    
+    // Converte o link curto do menu para o ID longo da página (se necessário)
+    if (alvo !== "#pagina-inicial" && alvo.startsWith("#")) {
+        alvo = alvo.replace("#", "#pagina-");
+    }
+
+    // Exceção que você já tinha:
     if (alvo === "#participacao") {
-        alvo = "#participacao-comunidade";
+      alvo = "#participacao-comunidade";
     }
+
     const paginaAlvo = document.querySelector(alvo);
-    if (!paginaAlvo) {
-        console.error("❌ ERRO: página não encontrada:", alvo);
-        return; // evita travar o JS
-    }
+    // ... restante do código
+    
     // remove ativa de todas
     paginas.forEach(p => p.classList.remove("ativa"));
     // adiciona ativa na correta
@@ -173,20 +178,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-formRegistro?.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const data = document.getElementById("data").value;
-  const quantidade = document.getElementById("quantidade").value;
-  if (!data || !quantidade) {
-    mostrarFeedback("Preencha todos os campos.");
-    return;
-  }
-  const tr = document.createElement("tr");
-  tr.innerHTML = <td>${data}</td><td>${quantidade} L</td>;
-  tabelaRegistros.appendChild(tr);
-  formRegistro.reset();
-  mostrarFeedback("Consumo registrado!");
-});
 
 /* ------ SERVIÇOS ------ */
 const formServico = document.getElementById("form-servico");
@@ -283,6 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
 
 
 
