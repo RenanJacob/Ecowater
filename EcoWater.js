@@ -24,6 +24,21 @@ const btnProximo = document.querySelector('.carrossel-btn.proximo');
 const btnAnterior = document.querySelector('.carrossel-btn.anterior');
 let slideAtual = 0;
 
+/* ============================
+   CORREÇÃO DE LINKS QUEBRADOS
+   ============================ */
+const mapaIds = {
+  participacao: "participacao-comunidade",
+  educacao: "pagina-educacao"
+};
+
+document.querySelectorAll('nav a').forEach(link => {
+  const destino = link.getAttribute("href").replace("#", "");
+  if (mapaIds[destino]) {
+    link.setAttribute("href", `#${mapaIds[destino]}`);
+  }
+});
+
 /* ---------------- MENU ---------------- */
 function abrirMenu() {
   menu.classList.add('show');
@@ -111,10 +126,16 @@ linksMenu.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
 
-    const destino = link.getAttribute('href').replace("#", "pagina-");
+    const destino = link.getAttribute('href').replace("#", "");
+
+    const paginaId = destino.startsWith("pagina-")
+      ? destino
+      : destino;
 
     paginas.forEach(p => p.classList.remove('ativa'));
-    document.getElementById(destino).classList.add('ativa');
+
+    const alvo = document.getElementById(paginaId);
+    if (alvo) alvo.classList.add('ativa');
 
     fecharMenu();
   });
@@ -155,7 +176,6 @@ const dadosFicticios = [
   { data: "2025-09-07", quantidade: 2.4 }
 ];
 
-// Preencher tabela com dados de exemplo
 document.addEventListener("DOMContentLoaded", () => {
   dadosFicticios.forEach(reg => {
     const tr = document.createElement("tr");
@@ -201,15 +221,7 @@ formServico?.addEventListener("submit", (e) => {
   formServico.reset();
 });
 
-
-
-
-
-
-// ===============================
-// FORMULÁRIO PARA MULHERES
-// ===============================
-
+/* ------ FORM MULHERES ------ */
 document.addEventListener("DOMContentLoaded", () => {
   const formMulheres = document.getElementById("form-mulheres");
 
@@ -226,7 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Aqui você pode futuramente enviar para seu banco ou API
       console.log("Formulário enviado (mulheres):", {
         nome,
         email,
@@ -252,43 +263,3 @@ function mostrarFeedback(texto, erro = false) {
   }, 3000);
 }
 
-
-// ===============================
-// PARTICIPAÇÃO DA COMUNIDADE
-// ===============================
-
-const formIdeia = document.getElementById("form-ideia");
-const listaIdeias = document.getElementById("lista-ideias");
-
-// Carregar ideias do localStorage
-let ideias = JSON.parse(localStorage.getItem("ecoWaterIdeias")) || [];
-
-function atualizarListaIdeias() {
-  listaIdeias.innerHTML = "";
-  ideias.forEach(i => {
-    const li = document.createElement("li");
-    li.textContent = `${i.nome ? i.nome + ": " : ""}${i.texto}`;
-    listaIdeias.appendChild(li);
-  });
-}
-
-atualizarListaIdeias();
-
-formIdeia?.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const nome = document.getElementById("nomeIdeia").value.trim();
-  const texto = document.getElementById("textoIdeia").value.trim();
-
-  if (!texto) {
-    mostrarFeedback("Digite uma ideia!");
-    return;
-  }
-
-  ideias.push({ nome, texto });
-  localStorage.setItem("ecoWaterIdeias", JSON.stringify(ideias));
-
-  atualizarListaIdeias();
-  mostrarFeedback("Ideia enviada!");
-  formIdeia.reset();
-});
