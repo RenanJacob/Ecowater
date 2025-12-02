@@ -112,23 +112,41 @@ linksMenu.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
 
-    // Corrige link específico para a seção real
+    // pega href do link
     let href = link.getAttribute('href');
-    let destinoID = href === '#participacao' ? '#participacao-comunidade' : href.replace('#', '#pagina-');
+
+    // cria um mapeamento manual de links para seções
+    const mapaSecoes = {
+      '#inicial': '#pagina-inicial',
+      '#monitoramento': '#pagina-monitoramento',
+      '#participacao': '#participacao-comunidade',
+      '#educacao': '#pagina-educacao',
+      '#registro': '#pagina-registro',
+      '#servicos': '#pagina-servicos'
+    };
+
+    const destinoID = mapaSecoes[href];
+
+    if (!destinoID) {
+      console.error('Seção não encontrada para o link:', href);
+      return; // evita quebrar o JS
+    }
 
     const paginaDestino = document.querySelector(destinoID);
 
     if (!paginaDestino) {
-      console.error('Página não encontrada:', destinoID);
-      return; // evita quebrar o JS
+      console.error('Elemento da seção não encontrado:', destinoID);
+      return;
     }
 
+    // remove classe ativa de todas as seções e adiciona na certa
     paginas.forEach(p => p.classList.remove('ativa'));
     paginaDestino.classList.add('ativa');
 
     fecharMenu();
   });
 });
+
 
 
 
@@ -325,6 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
 
 
 
