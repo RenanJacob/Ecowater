@@ -1,4 +1,3 @@
-
 // Seleção dos elementos
 const menuToggleBtn = document.getElementById('menu-toggle');
 const menuCloseBtn = document.getElementById('menu-close');
@@ -25,29 +24,24 @@ const btnProximo = document.querySelector('.carrossel-btn.proximo');
 const btnAnterior = document.querySelector('.carrossel-btn.anterior');
 let slideAtual = 0;
 
-document.addEventListener("DOMContentLoaded", () => {
-    // ---------------- MENU ----------------
-    const menuToggleBtn = document.getElementById('menu-toggle');
-    const menuCloseBtn = document.getElementById('menu-close');
-    const menu = document.getElementById('menu');
+/* ---------------- MENU ---------------- */
+function abrirMenu() {
+  menu.classList.add('show');
+  menu.setAttribute('aria-hidden', 'false');
+  menuToggleBtn.setAttribute('aria-expanded', 'true');
+}
 
-    function abrirMenu() {
-      menu.classList.add('show');
-      menu.setAttribute('aria-hidden', 'false');
-      menuToggleBtn.setAttribute('aria-expanded', 'true');
-    }
+function fecharMenu() {
+  menu.classList.remove('show');
+  menu.setAttribute('aria-hidden', 'true');
+  menuToggleBtn.setAttribute('aria-expanded', 'false');
+}
 
-    function fecharMenu() {
-      menu.classList.remove('show');
-      menu.setAttribute('aria-hidden', 'true');
-      menuToggleBtn.setAttribute('aria-expanded', 'false');
-    }
+menuToggleBtn.addEventListener('click', () => {
+  menu.classList.contains('show') ? fecharMenu() : abrirMenu();
+});
 
-    menuToggleBtn.addEventListener('click', () => {
-      menu.classList.contains('show') ? fecharMenu() : abrirMenu();
-    });
-
-    menuCloseBtn.addEventListener('click', fecharMenu);
+menuCloseBtn.addEventListener('click', fecharMenu);
 
 /* --------------- MODAIS ---------------- */
 function abrirModal(modal) {
@@ -117,32 +111,14 @@ linksMenu.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
 
-    let alvo = link.getAttribute("href");
+    const destino = link.getAttribute('href').replace("#", "pagina-");
 
-    // 🔥 Correção específica do seu site:
-    if (alvo === "#participacao") {
-        alvo = "#participacao-comunidade";
-    }
-
-    const paginaAlvo = document.querySelector(alvo);
-
-    if (!paginaAlvo) {
-        console.error("❌ ERRO: página não encontrada:", alvo);
-        return; // evita travar o JS
-    }
-
-    // remove ativa de todas
-    paginas.forEach(p => p.classList.remove("ativa"));
-
-    // adiciona ativa na correta
-    paginaAlvo.classList.add("ativa");
+    paginas.forEach(p => p.classList.remove('ativa'));
+    document.getElementById(destino).classList.add('ativa');
 
     fecharMenu();
   });
 });
-
-
-
 
 /* ------ CARROSSEL ------ */
 function mostrarSlide(index) {
@@ -277,6 +253,7 @@ function mostrarFeedback(texto, erro = false) {
 }
 
 
+
 // ===================================================================
 // PARTICIPAÇÃO DA COMUNIDADE (VERSÃO ISOLADA E À PROVA DE ERROS)
 // ===================================================================
@@ -337,6 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
 
 
 
