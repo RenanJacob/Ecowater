@@ -261,10 +261,10 @@ function mostrarFeedback(texto, erro = false) {
 const formIdeia = document.getElementById("form-ideia");
 const listaIdeias = document.getElementById("lista-ideias");
 
-// Carregar ideias do localStorage
+// Carregar ideias já salvas
 let ideias = JSON.parse(localStorage.getItem("ecoWaterIdeias")) || [];
 
-// Função que atualiza a lista na tela
+// função que realmente atualiza a lista
 function atualizarListaIdeias() {
   if (!listaIdeias) return;
 
@@ -277,6 +277,7 @@ function atualizarListaIdeias() {
   });
 }
 
+// Atualiza lista ao carregar a página
 atualizarListaIdeias();
 
 formIdeia?.addEventListener("submit", (e) => {
@@ -294,6 +295,6 @@ formIdeia?.addEventListener("submit", (e) => {
   localStorage.setItem("ecoWaterIdeias", JSON.stringify(ideias));
 
   atualizarListaIdeias();
-  mostrarFeedback("Ideia enviada com sucesso!");
+  mostrarFeedback("Ideia enviada!");
   formIdeia.reset();
 });
