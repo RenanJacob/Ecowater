@@ -100,24 +100,17 @@ formLogin?.addEventListener('submit', (e) => {
   fecharModal(modalLogin);
 });
 
-/* ------ MUDANÇA DE PÁGINA ------ */
+// Navegação de páginas
 linksMenu.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    let alvo = link.getAttribute("href");
-    // 🔥 Correção específica do seu site:
-    if (alvo === "#participacao") {
-        alvo = "#participacao-comunidade";
-    }
-    const paginaAlvo = document.querySelector(alvo);
-    if (!paginaAlvo) {
-        console.error("❌ ERRO: página não encontrada:", alvo);
-        return; // evita travar o JS
-    }
-    // remove ativa de todas
-    paginas.forEach(p => p.classList.remove("ativa"));
-    // adiciona ativa na correta
-    paginaAlvo.classList.add("ativa");
+    const destino = link.getAttribute('href').replace('#', 'pagina-');
+
+    paginas.forEach(pagina => pagina.classList.remove('ativa'));
+
+    const novaPagina = document.getElementById(destino);
+    if (novaPagina) novaPagina.classList.add('ativa');
+
     fecharMenu();
   });
 });
@@ -276,3 +269,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
