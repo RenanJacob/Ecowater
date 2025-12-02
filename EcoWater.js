@@ -265,37 +265,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // ===================================================================
-// PARTICIPAÇÃO DA COMUNIDADE (REVISADO E FUNCIONAL)
+// PARTICIPAÇÃO DA COMUNIDADE (REVISADO E SIMPLIFICADO)
 // ===================================================================
 document.addEventListener("DOMContentLoaded", () => {
     const formIdeia = document.getElementById("form-ideia");
-    const lista = document.getElementById("lista-ideias"); // Usando o novo ID do HTML
 
-    // Carregar ideias do localStorage
+    // Tenta carregar ideias existentes para adicionar a nova, se necessário
     let ideiasSalvas = [];
     try {
         ideiasSalvas = JSON.parse(localStorage.getItem("ecoWaterIdeias")) || [];
     } catch (e) {
         console.error("Erro ao carregar ideias do localStorage:", e);
     }
-
-    // Função para renderizar a lista no HTML
-    function atualizarLista() {
-        if (!lista) return; // Se a lista não existir, encerra
-        lista.innerHTML = "";
-        ideiasSalvas.forEach(i => {
-            const li = document.createElement("li");
-            // Formatação: Nome em negrito se existir
-            li.innerHTML = `
-                ${i.nome ? `<strong>${i.nome}:</strong> ` : ''}
-                ${i.texto}
-            `;
-            lista.appendChild(li);
-        });
-    }
-
-    // Renderiza a lista inicial
-    atualizarLista();
+    
+    // NOTA: A função atualizarLista não é mais necessária
 
     if (formIdeia) {
         formIdeia.addEventListener("submit", (e) => {
@@ -308,17 +291,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Adiciona nova ideia
-            ideiasSalvas.unshift({ nome, texto }); // unshift: adiciona no início
+            // Adiciona nova ideia ao array
+            ideiasSalvas.unshift({ nome, texto }); 
+            // Salva de volta no localStorage (mantendo o registro)
             localStorage.setItem("ecoWaterIdeias", JSON.stringify(ideiasSalvas));
 
-            // Atualiza o display e limpa o formulário
-            atualizarLista();
+            // Limpa o formulário e mostra a confirmação
             formIdeia.reset();
             mostrarFeedback("Ideia enviada! Obrigado pela sua contribuição.");
         });
     }
 });
+
 
 
 
