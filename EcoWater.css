@@ -576,3 +576,25 @@ nav::-webkit-scrollbar-thumb {
   border-color: #1565c0;
   outline: none;
 }
+
+
+.form-bloco {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 450px;
+}
+
+.lista-ideias {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.lista-ideias li {
+  background: #f1f1f1;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+}
