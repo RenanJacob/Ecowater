@@ -94,6 +94,7 @@ formCadastro?.addEventListener('submit', (e) => {
   const nome = document.getElementById('nome').value;
   localStorage.setItem('ecoWaterUsuario', nome);
  mostrarFeedback(`Bem-vindo, ${nome.split(" ")[0]}!`);
+  tr.innerHTML = `<td>${reg.data}</td><td>${reg.quantidade} L</td>`;
   formCadastro.reset();
   fecharModal(modalCadastro);
 });
@@ -282,4 +283,5 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
 
