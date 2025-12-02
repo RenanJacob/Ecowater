@@ -265,6 +265,15 @@ const listaIdeias = document.getElementById("lista-ideias");
 let ideias = JSON.parse(localStorage.getItem("ecoWaterIdeias")) || [];
 
 atualizarListaIdeias();
+if (listaIdeias) {
+  listaIdeias.innerHTML = "";
+  ideias.forEach(i => {
+    const li = document.createElement("li");
+    li.textContent = `${i.nome ? i.nome + ": " : ""}${i.texto}`;
+    listaIdeias.appendChild(li);
+  });
+}
+
 
 formIdeia?.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -284,4 +293,5 @@ formIdeia?.addEventListener("submit", (e) => {
   mostrarFeedback("Ideia enviada!");
   formIdeia.reset();
 });
+
 
