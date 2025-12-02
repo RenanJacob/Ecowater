@@ -112,22 +112,24 @@ linksMenu.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
 
-    let href = link.getAttribute('href'); // pega o href do menu
+    // Corrige link específico para a seção real
+    let href = link.getAttribute('href');
     let destinoID = href === '#participacao' ? '#participacao-comunidade' : href.replace('#', '#pagina-');
 
     const paginaDestino = document.querySelector(destinoID);
 
     if (!paginaDestino) {
       console.error('Página não encontrada:', destinoID);
-      return; // evita travar o JS
+      return; // evita quebrar o JS
     }
 
-    paginas.forEach(p => p.classList.remove('ativa')); // remove todas
-    paginaDestino.classList.add('ativa'); // ativa a correta
+    paginas.forEach(p => p.classList.remove('ativa'));
+    paginaDestino.classList.add('ativa');
 
-    fecharMenu(); // fecha menu se estiver aberto
+    fecharMenu();
   });
 });
+
 
 
 /* ------ CARROSSEL ------ */
@@ -323,5 +325,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
 
 
