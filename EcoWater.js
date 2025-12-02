@@ -116,10 +116,10 @@ linksMenu.forEach(link => {
     let href = link.getAttribute('href');
 
     // cria um mapeamento manual de links para seções
-   const mapaSecoes = {
+  const mapaSecoes = {
   '#inicial': 'pagina-inicial',
   '#monitoramento': 'pagina-monitoramento',
-  '#participacao': 'participacao-comunidade', // aqui está o correto
+  '#participacao': 'participacao-comunidade', // link aponta para #participacao
   '#educacao': 'pagina-educacao',
   '#registro': 'pagina-registro',
   '#servicos': 'pagina-servicos'
@@ -131,17 +131,19 @@ linksMenu.forEach(link => {
     const href = link.getAttribute('href');
     const destinoId = mapaSecoes[href];
     if (!destinoId) {
-      console.warn(`participacao-comunidade: ${href}`);
+      console.warn(`Página não encontrada: ${href}`);
       return;
     }
 
     paginas.forEach(p => p.classList.remove('ativa'));
+
     const destino = document.getElementById(destinoId);
     if (destino) destino.classList.add('ativa');
 
     fecharMenu();
   });
 });
+
 
 
 /* ------ CARROSSEL ------ */
@@ -337,6 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
 
 
 
