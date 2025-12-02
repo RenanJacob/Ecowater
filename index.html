@@ -128,18 +128,20 @@
 </section>
 
 
- <section id="pagina-participacao" class="pagina">
+<section id="participacao-comunidade" class="pagina">
   <h2>Participação da Comunidade</h2>
-  <article>
-    <p>Veja como sua vizinhança está contribuindo para o uso sustentável da água!</p>
-    <h3>Projetos Ativos:</h3>
-    <ul>
-      <li>🌱 Hortas coletivas com reaproveitamento de água da chuva</li>
-      <li>🚿 Troca de torneiras antigas por modelos mais eficientes</li>
-      <li>📢 Campanhas de conscientização nas escolas</li>
-    </ul>
-  </article>
+  <p>Compartilhe ideias e colabore para melhorar o uso consciente da água.</p>
+
+  <form id="form-ideia" class="form-bloco">
+    <input type="text" id="nomeIdeia" placeholder="Seu nome (opcional)">
+    <textarea id="textoIdeia" placeholder="Digite sua ideia aqui..." required></textarea>
+    <button type="submit">Enviar Ideia</button>
+  </form>
+
+  <h3>Ideias Enviadas</h3>
+  <ul id="lista-ideias" class="lista-ideias"></ul>
 </section>
+
 
   <section id="pagina-educacao" class="pagina">
   <h2>Educação e Conscientização</h2>
@@ -291,6 +293,7 @@
 
 </body>
 </html>
+
 
 
 
