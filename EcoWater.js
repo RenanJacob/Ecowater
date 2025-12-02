@@ -259,21 +259,7 @@ function mostrarFeedback(texto, erro = false) {
 // ===============================
 
 const formIdeia = document.getElementById("form-ideia");
-const listaIdeias = document.getElementById("lista-ideias");
-
-// Carregar ideias do localStorage
-let ideias = JSON.parse(localStorage.getItem("ecoWaterIdeias")) || [];
-
-atualizarListaIdeias();
-if (listaIdeias) {
-  listaIdeias.innerHTML = "";
-  ideias.forEach(i => {
-    const li = document.createElement("li");
-    li.textContent = `${i.nome ? i.nome + ": " : ""}${i.texto}`;
-    listaIdeias.appendChild(li);
-  });
-}
-
+const blocoSucesso = document.getElementById("bloco-sucesso");
 
 formIdeia?.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -282,16 +268,21 @@ formIdeia?.addEventListener("submit", (e) => {
   const texto = document.getElementById("textoIdeia").value.trim();
 
   if (!texto) {
-    mostrarFeedback("Digite uma ideia!");
+    mostrarFeedback("Digite uma sugestão antes de enviar.");
     return;
   }
 
-  ideias.push({ nome, texto });
-  localStorage.setItem("ecoWaterIdeias", JSON.stringify(ideias));
+  // Salvar sugestão no localStorage
+  const sugestoesSalvas = JSON.parse(localStorage.getItem("ecoWaterSugestoes")) || [];
+  sugestoesSalvas.push({ nome, texto, data: new Date().toLocaleString() });
+  localStorage.setItem("ecoWaterSugestoes", JSON.stringify(sugestoesSalvas));
 
-  atualizarListaIdeias();
-  mostrarFeedback("Ideia enviada!");
+  // Feedback visual da própria página
+  blocoSucesso.style.display = "block";
+
+  // Limpar form
   formIdeia.reset();
+
+  // Mensagem geral no topo
+  mostrarFeedback("Sugestão enviada com sucesso!");
 });
-
-
