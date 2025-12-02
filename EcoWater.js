@@ -115,8 +115,31 @@ linksMenu.forEach(link => {
     const destino = link.getAttribute('href').replace("#", "pagina-");
 
     paginas.forEach(p => p.classList.remove('ativa'));
-    document.getElementById(destino).classList.add('ativa');
+ link.addEventListener("click", function (e) {
+    e.preventDefault();
 
+    let alvo = this.getAttribute("href");
+
+    // 🔥 Correção específica do seu site:
+    if (alvo === "#participacao") {
+        alvo = "#participacao-comunidade";
+    }
+
+    const paginaAlvo = document.querySelector(alvo);
+
+    if (!paginaAlvo) {
+        console.error("❌ ERRO: página não encontrada:", alvo);
+        return; // evita travar o JS
+    }
+
+    // remove ativa de todas
+    document.querySelectorAll(".pagina").forEach(p => p.classList.remove("ativa"));
+
+    // adiciona ativa na correta
+    paginaAlvo.classList.add("ativa");
+});
+
+    
     fecharMenu();
   });
 });
@@ -314,3 +337,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
