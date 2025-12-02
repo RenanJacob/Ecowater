@@ -107,42 +107,28 @@ formLogin?.addEventListener('submit', (e) => {
   fecharModal(modalLogin);
 });
 
-/* ------ MUDANÇA DE PÁGINA ------ */
+// ------ MUDANÇA DE PÁGINA ------
 linksMenu.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
 
-    const destino = link.getAttribute('href').replace("#", "pagina-");
+    let href = link.getAttribute('href'); // pega o href do menu
+    let destinoID = href === '#participacao' ? '#participacao-comunidade' : href.replace('#', '#pagina-');
 
-    paginas.forEach(p => p.classList.remove('ativa'));
- link.addEventListener("click", function (e) {
-    e.preventDefault();
+    const paginaDestino = document.querySelector(destinoID);
 
-    let alvo = this.getAttribute("href");
-
-    // 🔥 Correção específica do seu site:
-    if (alvo === "#participacao") {
-        alvo = "#participacao-comunidade";
+    if (!paginaDestino) {
+      console.error('Página não encontrada:', destinoID);
+      return; // evita travar o JS
     }
 
-    const paginaAlvo = document.querySelector(alvo);
+    paginas.forEach(p => p.classList.remove('ativa')); // remove todas
+    paginaDestino.classList.add('ativa'); // ativa a correta
 
-    if (!paginaAlvo) {
-        console.error("❌ ERRO: página não encontrada:", alvo);
-        return; // evita travar o JS
-    }
-
-    // remove ativa de todas
-    document.querySelectorAll(".pagina").forEach(p => p.classList.remove("ativa"));
-
-    // adiciona ativa na correta
-    paginaAlvo.classList.add("ativa");
-});
-
-    
-    fecharMenu();
+    fecharMenu(); // fecha menu se estiver aberto
   });
 });
+
 
 /* ------ CARROSSEL ------ */
 function mostrarSlide(index) {
@@ -337,4 +323,5 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
 
