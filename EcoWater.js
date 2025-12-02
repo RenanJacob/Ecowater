@@ -107,42 +107,35 @@ formLogin?.addEventListener('submit', (e) => {
   fecharModal(modalLogin);
 });
 
-// ------ MUDANÇA DE PÁGINA ------
+/* ------ MUDANÇA DE PÁGINA ------ */
 linksMenu.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
 
-    // pega href do link
-    let href = link.getAttribute('href');
+    let alvo = link.getAttribute("href");
 
-    // cria um mapeamento manual de links para seções
-  const mapaSecoes = {
-  '#inicial': 'pagina-inicial',
-  '#monitoramento': 'pagina-monitoramento',
-  '#participacao': 'participacao-comunidade', // link aponta para #participacao
-  '#educacao': 'pagina-educacao',
-  '#registro': 'pagina-registro',
-  '#servicos': 'pagina-servicos'
-};
-
-linksMenu.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const href = link.getAttribute('href');
-    const destinoId = mapaSecoes[href];
-    if (!destinoId) {
-      console.warn(`Página não encontrada: ${href}`);
-      return;
+    // 🔥 Correção específica do seu site:
+    if (alvo === "#participacao") {
+        alvo = "#participacao-comunidade";
     }
 
-    paginas.forEach(p => p.classList.remove('ativa'));
+    const paginaAlvo = document.querySelector(alvo);
 
-    const destino = document.getElementById(destinoId);
-    if (destino) destino.classList.add('ativa');
+    if (!paginaAlvo) {
+        console.error("❌ ERRO: página não encontrada:", alvo);
+        return; // evita travar o JS
+    }
+
+    // remove ativa de todas
+    paginas.forEach(p => p.classList.remove("ativa"));
+
+    // adiciona ativa na correta
+    paginaAlvo.classList.add("ativa");
 
     fecharMenu();
   });
 });
+
 
 
 
@@ -339,6 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
 
 
 
