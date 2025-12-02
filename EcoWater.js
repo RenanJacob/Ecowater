@@ -25,24 +25,29 @@ const btnProximo = document.querySelector('.carrossel-btn.proximo');
 const btnAnterior = document.querySelector('.carrossel-btn.anterior');
 let slideAtual = 0;
 
-/* ---------------- MENU ---------------- */
-function abrirMenu() {
-  menu.classList.add('show');
-  menu.setAttribute('aria-hidden', 'false');
-  menuToggleBtn.setAttribute('aria-expanded', 'true');
-}
+document.addEventListener("DOMContentLoaded", () => {
+    // ---------------- MENU ----------------
+    const menuToggleBtn = document.getElementById('menu-toggle');
+    const menuCloseBtn = document.getElementById('menu-close');
+    const menu = document.getElementById('menu');
 
-function fecharMenu() {
-  menu.classList.remove('show');
-  menu.setAttribute('aria-hidden', 'true');
-  menuToggleBtn.setAttribute('aria-expanded', 'false');
-}
+    function abrirMenu() {
+      menu.classList.add('show');
+      menu.setAttribute('aria-hidden', 'false');
+      menuToggleBtn.setAttribute('aria-expanded', 'true');
+    }
 
-menuToggleBtn.addEventListener('click', () => {
-  menu.classList.contains('show') ? fecharMenu() : abrirMenu();
-});
+    function fecharMenu() {
+      menu.classList.remove('show');
+      menu.setAttribute('aria-hidden', 'true');
+      menuToggleBtn.setAttribute('aria-expanded', 'false');
+    }
 
-menuCloseBtn.addEventListener('click', fecharMenu);
+    menuToggleBtn.addEventListener('click', () => {
+      menu.classList.contains('show') ? fecharMenu() : abrirMenu();
+    });
+
+    menuCloseBtn.addEventListener('click', fecharMenu);
 
 /* --------------- MODAIS ---------------- */
 function abrirModal(modal) {
@@ -332,6 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
 
 
 
