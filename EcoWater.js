@@ -73,7 +73,6 @@ window.addEventListener('keydown', (e) => {
 function mostrarFeedback(msg) {
   feedbackMessage.textContent = msg;
   feedbackMessage.classList.add('show');
-
   setTimeout(() => {
     feedbackMessage.classList.remove('show');
   }, 3500);
@@ -82,17 +81,13 @@ function mostrarFeedback(msg) {
 /* ------ CADASTRO ------ */
 formCadastro?.addEventListener('submit', (e) => {
   e.preventDefault();
-
   if (!formCadastro.checkValidity()) {
     mostrarFeedback("Preencha todos os campos corretamente.");
     return;
   }
-
   const nome = document.getElementById('nome').value;
-
   localStorage.setItem('ecoWaterUsuario', nome);
-
-  mostrarFeedback(`Bem-vindo, ${nome.split(" ")[0]}!`);
+  mostrarFeedback(Bem-vindo, ${nome.split(" ")[0]}!);
   formCadastro.reset();
   fecharModal(modalCadastro);
 });
@@ -100,7 +95,6 @@ formCadastro?.addEventListener('submit', (e) => {
 /* ------ LOGIN ------ */
 formLogin?.addEventListener('submit', (e) => {
   e.preventDefault();
-
   mostrarFeedback("Login realizado com sucesso!");
   formLogin.reset();
   fecharModal(modalLogin);
@@ -110,12 +104,20 @@ formLogin?.addEventListener('submit', (e) => {
 linksMenu.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-
-    const destino = link.getAttribute('href').replace("#", "pagina-");
-
-    paginas.forEach(p => p.classList.remove('ativa'));
-    document.getElementById(destino).classList.add('ativa');
-
+    let alvo = link.getAttribute("href");
+    // 🔥 Correção específica do seu site:
+    if (alvo === "#participacao") {
+        alvo = "#participacao-comunidade";
+    }
+    const paginaAlvo = document.querySelector(alvo);
+    if (!paginaAlvo) {
+        console.error("❌ ERRO: página não encontrada:", alvo);
+        return; // evita travar o JS
+    }
+    // remove ativa de todas
+    paginas.forEach(p => p.classList.remove("ativa"));
+    // adiciona ativa na correta
+    paginaAlvo.classList.add("ativa");
     fecharMenu();
   });
 });
@@ -159,82 +161,58 @@ const dadosFicticios = [
 document.addEventListener("DOMContentLoaded", () => {
   dadosFicticios.forEach(reg => {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${reg.data}</td><td>${reg.quantidade} L</td>`;
+    tr.innerHTML = <td>${reg.data}</td><td>${reg.quantidade} L</td>;
     tabelaRegistros.appendChild(tr);
   });
 });
 
 formRegistro?.addEventListener("submit", (e) => {
   e.preventDefault();
-
   const data = document.getElementById("data").value;
   const quantidade = document.getElementById("quantidade").value;
-
   if (!data || !quantidade) {
     mostrarFeedback("Preencha todos os campos.");
     return;
   }
-
   const tr = document.createElement("tr");
-  tr.innerHTML = `<td>${data}</td><td>${quantidade} L</td>`;
+  tr.innerHTML = <td>${data}</td><td>${quantidade} L</td>;
   tabelaRegistros.appendChild(tr);
-
   formRegistro.reset();
   mostrarFeedback("Consumo registrado!");
 });
 
 /* ------ SERVIÇOS ------ */
 const formServico = document.getElementById("form-servico");
-
 formServico?.addEventListener("submit", (e) => {
   e.preventDefault();
-
   const tipo = document.getElementById("tipo-servico").value;
   const descricao = document.getElementById("descricao-servico").value;
-
   if (!tipo || !descricao.trim()) {
     mostrarFeedback("Preencha todos os campos.");
     return;
   }
-
-  mostrarFeedback(`Solicitação de "${tipo}" enviada com sucesso!`);
+  mostrarFeedback(Solicitação de "${tipo}" enviada com sucesso!);
   formServico.reset();
 });
-
-
-
-
-
 
 // ===============================
 // FORMULÁRIO PARA MULHERES
 // ===============================
-
 document.addEventListener("DOMContentLoaded", () => {
   const formMulheres = document.getElementById("form-mulheres");
-
   if (formMulheres) {
     formMulheres.addEventListener("submit", function (event) {
       event.preventDefault();
-
       const nome = document.getElementById("nomeMulher").value.trim();
       const email = document.getElementById("emailMulher").value.trim();
       const mensagem = document.getElementById("mensagemMulher").value.trim();
-
       if (!nome || !email || !mensagem) {
         mostrarFeedback("Preencha todos os campos!", true);
         return;
       }
-
       // Aqui você pode futuramente enviar para seu banco ou API
-      console.log("Formulário enviado (mulheres):", {
-        nome,
-        email,
-        mensagem
-      });
-
+      console.log("Formulário enviado (mulheres):", { nome, email, mensagem });
       mostrarFeedback("Mensagem enviada com sucesso!", false);
-
       formMulheres.reset();
     });
   }
@@ -246,22 +224,17 @@ function mostrarFeedback(texto, erro = false) {
   box.textContent = texto;
   box.style.backgroundColor = erro ? "#c62828" : "#1565c0";
   box.classList.add("show");
-
   setTimeout(() => {
     box.classList.remove("show");
   }, 3000);
 }
 
-
-
 // ===================================================================
 // PARTICIPAÇÃO DA COMUNIDADE (VERSÃO ISOLADA E À PROVA DE ERROS)
 // ===================================================================
-
 document.addEventListener("DOMContentLoaded", () => {
     const formIdeia = document.getElementById("form-ideia");
     const listaIdeias = document.getElementById("lista-ideias");
-
     // Se o HTML ainda não tiver a lista, criamos dinamicamente sem quebrar nada
     if (!listaIdeias) {
         console.warn("⚠ A lista UL de ideias não existe no HTML. Criando agora...");
@@ -269,9 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
         novaLista.id = "lista-ideias";
         formIdeia.insertAdjacentElement("afterend", novaLista);
     }
-
     const lista = document.getElementById("lista-ideias");
-
     // Carregar do localStorage sem travar o JS
     let ideiasSalvas;
     try {
@@ -279,35 +250,26 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch {
         ideiasSalvas = [];
     }
-
     function atualizarLista() {
         lista.innerHTML = "";
-
         ideiasSalvas.forEach(i => {
             const li = document.createElement("li");
-            li.textContent = `${i.nome ? i.nome + ": " : ""}${i.texto}`;
+            li.textContent = ${i.nome ? i.nome + ": " : ""}${i.texto};
             lista.appendChild(li);
         });
     }
-
     atualizarLista();
-
     if (formIdeia) {
         formIdeia.addEventListener("submit", (e) => {
             e.preventDefault();
-
             const nome = document.getElementById("nomeIdeia").value.trim();
             const texto = document.getElementById("textoIdeia").value.trim();
-
             if (!texto) {
                 mostrarFeedback("Digite uma ideia!");
                 return;
             }
-
             ideiasSalvas.push({ nome, texto });
-
             localStorage.setItem("ecoWaterIdeias", JSON.stringify(ideiasSalvas));
-
             atualizarLista();
             formIdeia.reset();
             mostrarFeedback("Ideia enviada!");
