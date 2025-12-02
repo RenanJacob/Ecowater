@@ -116,38 +116,32 @@ linksMenu.forEach(link => {
     let href = link.getAttribute('href');
 
     // cria um mapeamento manual de links para seções
-    const mapaSecoes = {
-      '#inicial': '#pagina-inicial',
-      '#monitoramento': '#pagina-monitoramento',
-      '#participacao': '#participacao-comunidade',
-      '#educacao': '#pagina-educacao',
-      '#registro': '#pagina-registro',
-      '#servicos': '#pagina-servicos'
-    };
+   const mapaSecoes = {
+  '#inicial': 'pagina-inicial',
+  '#monitoramento': 'pagina-monitoramento',
+  '#participacao': 'participacao-comunidade', // aqui está o correto
+  '#educacao': 'pagina-educacao',
+  '#registro': 'pagina-registro',
+  '#servicos': 'pagina-servicos'
+};
 
-    const destinoID = mapaSecoes[href];
-
-    if (!destinoID) {
-      console.error('Seção não encontrada para o link:', href);
-      return; // evita quebrar o JS
-    }
-
-    const paginaDestino = document.querySelector(destinoID);
-
-    if (!paginaDestino) {
-      console.error('Elemento da seção não encontrado:', destinoID);
+linksMenu.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const href = link.getAttribute('href');
+    const destinoId = mapaSecoes[href];
+    if (!destinoId) {
+      console.warn(`Página não encontrada: ${href}`);
       return;
     }
 
-    // remove classe ativa de todas as seções e adiciona na certa
     paginas.forEach(p => p.classList.remove('ativa'));
-    paginaDestino.classList.add('ativa');
+    const destino = document.getElementById(destinoId);
+    if (destino) destino.classList.add('ativa');
 
     fecharMenu();
   });
 });
-
-
 
 
 /* ------ CARROSSEL ------ */
@@ -343,6 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
 
 
 
