@@ -131,7 +131,7 @@ linksMenu.forEach(link => {
     const href = link.getAttribute('href');
     const destinoId = mapaSecoes[href];
     if (!destinoId) {
-      console.warn(`Página não encontrada: ${href}`);
+      console.warn(`participacao-comunidade: ${href}`);
       return;
     }
 
@@ -337,6 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
 
 
 
