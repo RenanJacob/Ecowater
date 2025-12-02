@@ -94,7 +94,6 @@ formCadastro?.addEventListener('submit', (e) => {
   const nome = document.getElementById('nome').value;
   localStorage.setItem('ecoWaterUsuario', nome);
 mostrarFeedback(`Bem-vindo, ${nome.split(" ")[0]}!`);
-  li.textContent = `${i.nome ? i.nome + ": " : ""}${i.texto}`;
   formCadastro.reset();
   fecharModal(modalCadastro);
 });
@@ -168,7 +167,7 @@ const dadosFicticios = [
 document.addEventListener("DOMContentLoaded", () => {
   dadosFicticios.forEach(reg => {
     const tr = document.createElement("tr");
-    tr.innerHTML = <td>${reg.data}</td><td>${reg.quantidade} L</td>;
+    tr.innerHTML = `<td>${reg.data}</td><td>${reg.quantidade} L</td>`;
     tabelaRegistros.appendChild(tr);
   });
 });
@@ -198,7 +197,7 @@ formServico?.addEventListener("submit", (e) => {
     mostrarFeedback("Preencha todos os campos.");
     return;
   }
-  mostrarFeedback(Solicitação de "${tipo}" enviada com sucesso!);
+  mostrarFeedback(`Solicitação de "${tipo}" enviada com sucesso!`);
   formServico.reset();
 });
 
@@ -261,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lista.innerHTML = "";
         ideiasSalvas.forEach(i => {
             const li = document.createElement("li");
-            li.textContent = ${i.nome ? i.nome + ": " : ""}${i.texto};
+            li.textContent = `${i.nome ? i.nome + ": " : ""}${i.texto}`;
             lista.appendChild(li);
         });
     }
@@ -283,6 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
 
 
 
