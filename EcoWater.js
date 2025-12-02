@@ -251,3 +251,44 @@ function mostrarFeedback(texto, erro = false) {
     box.classList.remove("show");
   }, 3000);
 }
+
+
+// ===============================
+// PARTICIPAÇÃO DA COMUNIDADE
+// ===============================
+
+const formIdeia = document.getElementById("form-ideia");
+const listaIdeias = document.getElementById("lista-ideias");
+
+// Carregar ideias do localStorage
+let ideias = JSON.parse(localStorage.getItem("ecoWaterIdeias")) || [];
+
+function atualizarListaIdeias() {
+  listaIdeias.innerHTML = "";
+  ideias.forEach(i => {
+    const li = document.createElement("li");
+    li.textContent = `${i.nome ? i.nome + ": " : ""}${i.texto}`;
+    listaIdeias.appendChild(li);
+  });
+}
+
+atualizarListaIdeias();
+
+formIdeia?.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const nome = document.getElementById("nomeIdeia").value.trim();
+  const texto = document.getElementById("textoIdeia").value.trim();
+
+  if (!texto) {
+    mostrarFeedback("Digite uma ideia!");
+    return;
+  }
+
+  ideias.push({ nome, texto });
+  localStorage.setItem("ecoWaterIdeias", JSON.stringify(ideias));
+
+  atualizarListaIdeias();
+  mostrarFeedback("Ideia enviada!");
+  formIdeia.reset();
+});
