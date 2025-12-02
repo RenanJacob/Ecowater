@@ -254,47 +254,63 @@ function mostrarFeedback(texto, erro = false) {
 }
 
 
-// ===============================
-// PARTICIPAÇÃO DA COMUNIDADE
-// ===============================
+// ===================================================================
+// PARTICIPAÇÃO DA COMUNIDADE (VERSÃO ISOLADA E À PROVA DE ERROS)
+// ===================================================================
 
-const formIdeia = document.getElementById("form-ideia");
-const listaIdeias = document.getElementById("lista-ideias");
+document.addEventListener("DOMContentLoaded", () => {
+    const formIdeia = document.getElementById("form-ideia");
+    const listaIdeias = document.getElementById("lista-ideias");
 
-// Carregar ideias já salvas
-let ideias = JSON.parse(localStorage.getItem("ecoWaterIdeias")) || [];
+    // Se o HTML ainda não tiver a lista, criamos dinamicamente sem quebrar nada
+    if (!listaIdeias) {
+        console.warn("⚠ A lista UL de ideias não existe no HTML. Criando agora...");
+        const novaLista = document.createElement("ul");
+        novaLista.id = "lista-ideias";
+        formIdeia.insertAdjacentElement("afterend", novaLista);
+    }
 
-// função que realmente atualiza a lista
-function atualizarListaIdeias() {
-  if (!listaIdeias) return;
+    const lista = document.getElementById("lista-ideias");
 
-  listaIdeias.innerHTML = "";
+    // Carregar do localStorage sem travar o JS
+    let ideiasSalvas;
+    try {
+        ideiasSalvas = JSON.parse(localStorage.getItem("ecoWaterIdeias")) || [];
+    } catch {
+        ideiasSalvas = [];
+    }
 
-  ideias.forEach(i => {
-    const li = document.createElement("li");
-    li.textContent = `${i.nome ? i.nome + ": " : ""}${i.texto}`;
-    listaIdeias.appendChild(li);
-  });
-}
+    function atualizarLista() {
+        lista.innerHTML = "";
 
-// Atualiza lista ao carregar a página
-atualizarListaIdeias();
+        ideiasSalvas.forEach(i => {
+            const li = document.createElement("li");
+            li.textContent = `${i.nome ? i.nome + ": " : ""}${i.texto}`;
+            lista.appendChild(li);
+        });
+    }
 
-formIdeia?.addEventListener("submit", (e) => {
-  e.preventDefault();
+    atualizarLista();
 
-  const nome = document.getElementById("nomeIdeia").value.trim();
-  const texto = document.getElementById("textoIdeia").value.trim();
+    if (formIdeia) {
+        formIdeia.addEventListener("submit", (e) => {
+            e.preventDefault();
 
-  if (!texto) {
-    mostrarFeedback("Digite uma ideia!");
-    return;
-  }
+            const nome = document.getElementById("nomeIdeia").value.trim();
+            const texto = document.getElementById("textoIdeia").value.trim();
 
-  ideias.push({ nome, texto });
-  localStorage.setItem("ecoWaterIdeias", JSON.stringify(ideias));
+            if (!texto) {
+                mostrarFeedback("Digite uma ideia!");
+                return;
+            }
 
-  atualizarListaIdeias();
-  mostrarFeedback("Ideia enviada!");
-  formIdeia.reset();
+            ideiasSalvas.push({ nome, texto });
+
+            localStorage.setItem("ecoWaterIdeias", JSON.stringify(ideiasSalvas));
+
+            atualizarLista();
+            formIdeia.reset();
+            mostrarFeedback("Ideia enviada!");
+        });
+    }
 });
