@@ -2,6 +2,15 @@
   box-sizing: border-box;
 }
 
+
+html, body {
+    /* Mantendo as correções anteriores para a rolagem, se aplicadas */
+    margin: 0;
+    padding: 0;
+    /* Adicione overflow-x: hidden para garantir que não haja barra de rolagem horizontal */
+    overflow-x: hidden; 
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -436,7 +445,7 @@ nav::-webkit-scrollbar-thumb {
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-  aspect-ratio: 4 / 3; 
+  aspect-ratio: 4 / 3;
   background: #fff;
 }
   
@@ -817,6 +826,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
