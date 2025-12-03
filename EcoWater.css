@@ -353,19 +353,19 @@ nav::-webkit-scrollbar-thumb {
   outline-offset: 2px;
 }
 
-/* CARROSSEL - substitua sua versão antiga por esta */
-.carrossel {
-  position: relative;
+
+
+/* Localize e MODIFIQUE esta regra: */
+.slides img {
   width: 100%;
-  max-width: 800px;
-  margin: 30px auto;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-  /* força proporção uniforme (16:9). Ajuste se quiser outra proporção */
-  aspect-ratio: 16 / 9;
-  background: #fff;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* ➡️ OPCIONAL: Se o topo da imagem for o que importa, mude o foco do corte. */
+  object-position: top;
 }
+
+
 
 .slides {
   display: none;
@@ -760,5 +760,6 @@ nav::-webkit-scrollbar-thumb {
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
