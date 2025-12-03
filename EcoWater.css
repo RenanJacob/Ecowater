@@ -406,7 +406,7 @@ nav::-webkit-scrollbar-thumb {
 /* Regra para as imagens dentro do carrossel */
 .slides img {
   width: 100%;
-  height: 100%;
+  height: 90%;
   object-fit: cover;
   display: block;
   /* ✅ CORREÇÃO: Foca o corte da imagem na parte superior */
@@ -418,7 +418,7 @@ nav::-webkit-scrollbar-thumb {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 50px;
+  bottom: 0px;
   margin: 0;
   padding: 12px;
   background: rgba(21,101,192,0.85);
@@ -820,6 +820,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
