@@ -175,16 +175,15 @@ nav a:focus {
   opacity: 1;
   transform: translateX(0);
   
-  /* ✅ CORREÇÃO: Garante que a altura da página é no mínimo a altura da tela, 
-     menos a altura do cabeçalho (aprox. 130px) e do rodapé fixo (aprox. 50px). */
-  min-height: calc(100vh - 180px); /* 100vh = Altura total da tela */
+  /* ❌ Remova a linha min-height para evitar conflitos de altura. */
+  /* min-height: calc(100vh - 180px); */ 
   
   /* Mantém o padding superior para descer abaixo do header. */
   padding-top: 100px; 
   padding-left: 20px;
   padding-right: 20px;
-  /* Mantém o espaçamento GRANDE no final (para o footer fixo) */
-  padding-bottom: 80px; 
+  /* ➡️ Aumentar o padding inferior. */
+  padding-bottom: 120px; /* Mais de 80px para garantir que o footer não cubra */
 }
 
 /* Localize e MODIFIQUE esta regra (Seção de Títulos): */
@@ -564,8 +563,8 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
   gap: 12px;
   max-width: 500px;
   margin-top: 20px;
-  /* ✅ CORREÇÃO: Adiciona uma margem inferior para dar um respiro extra */
-  margin-bottom: 30px; 
+  /* ✅ CORREÇÃO: Garante margem inferior para o botão não sumir sob o padding-bottom */
+  margin-bottom: 50px; 
 }
   
   outline: none;
@@ -818,6 +817,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
