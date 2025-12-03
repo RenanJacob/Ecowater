@@ -384,11 +384,14 @@ nav::-webkit-scrollbar-thumb {
 }
 
 /* garante que a imagem preencha o container sem distorcer */
+/* Regra para as imagens dentro do carrossel */
 .slides img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* cover evita que uma imagem "empurre" o layout */
+  object-fit: cover;
   display: block;
+  /* ✅ CORREÇÃO: Foca o corte da imagem na parte superior */
+  object-position: top; 
 }
 
 /* legenda em sobreposição (opcional) */
@@ -406,15 +409,18 @@ nav::-webkit-scrollbar-thumb {
 }
 
 /* botões */
+/* Corrija a regra existente para .carrossel */
 .carrossel {
   position: relative;
   width: 100%;
-  max-width: 650px; /* Reduzi um pouco a largura máxima para dar mais espaço */
+  /* Define uma largura máxima razoável */
+  max-width: 650px; 
   margin: 30px auto;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-  aspect-ratio: 16 / 9;
+  /* Define uma proporção que não seja muito alta, ex: 4/3 */
+  aspect-ratio: 4 / 3; 
   background: #fff;
 }
 
@@ -772,6 +778,7 @@ nav::-webkit-scrollbar-thumb {
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
