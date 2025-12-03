@@ -180,7 +180,8 @@ h2 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 2rem;
-  margin-bottom: 12px;
+  /* ➡️ CORREÇÃO: Reduzir margin-bottom para 0 ou um valor bem pequeno. */
+  margin-bottom: 0px; 
 }
 
 h3 {
@@ -408,14 +409,13 @@ nav::-webkit-scrollbar-thumb {
   font-size: 1rem;
 }
 
-/* botões */
 /* Localize esta regra no seu CSS (Seção CARROSSEL): */
- .carrossel {
+.carrossel {
   position: relative;
   width: 100%;
   max-width: 650px;
-  /* ➡️ CORREÇÃO FINAL: Garantir que a margem superior é 0 */
-  margin: 20px auto 30px auto; /* 0 no topo, 10px na base, centralizado */
+  /* ➡️ AJUSTE FINAL: Margem superior pequena para separar do título (h2) */
+  margin: 5px auto 10px auto; 
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
@@ -425,7 +425,7 @@ nav::-webkit-scrollbar-thumb {
   
 /* ✅ NOVO/AJUSTE: Adicione um espaçamento interno ao container que envolve o carrossel */
 .inicio-carrossel {
-   padding: 20px;
+  padding: 0px 20px 20px 20px;
 }
 
 .carrossel-btn.anterior { left: 12px; }
@@ -777,6 +777,7 @@ nav::-webkit-scrollbar-thumb {
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
