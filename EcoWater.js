@@ -136,7 +136,10 @@ linksMenu.forEach(link => {
           alvo = "#pagina-registro";
         } else if (alvo === "#servicos") {
           alvo = "#pagina-servicos";
-        }
+        } else if (alvo === "#mulheres") {
+          alvo = "#pagina-mulheres";
+        } 
+        
         
         const paginaAlvo = document.querySelector(alvo);
         
@@ -302,6 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
 
 
 
