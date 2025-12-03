@@ -265,6 +265,8 @@ footer {
   font-size: 1.6rem;
 }
 
+
+
 form input {
   padding: 14px 18px;
   border: 1.5px solid #bbb;
@@ -274,7 +276,12 @@ form input {
   transition: border-color 0.3s;
   width: 100%;
   user-select: text;
+  
+  /* ✅ ADICIONE ESTA LINHA: */
+  box-sizing: border-box;
 }
+
+
 
 form input:focus {
   border-color: #1565c0;
@@ -753,4 +760,5 @@ nav::-webkit-scrollbar-thumb {
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
