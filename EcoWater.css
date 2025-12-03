@@ -655,3 +655,68 @@ nav::-webkit-scrollbar-thumb {
 }
 
 /* FIM dos estilos da Comunidade */
+
+
+
+/* --- Estilos para a Seção Educação e Conscientização --- */
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.card-educacao {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 5px solid #1565c0; /* Linha azul de destaque */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-educacao:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.card-educacao h3 {
+  color: #0d47a1;
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.card-educacao p {
+  color: #555;
+  margin-bottom: 15px;
+  flex-grow: 1; /* Garante que o texto ocupe o espaço */
+}
+
+.btn-card {
+  display: inline-block;
+  background-color: #4caf50; /* Verde para ação */
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.btn-card:hover {
+  background-color: #388e3c;
+}
+
+/* Estilo específico para o card de vídeo (iframe responsivo) */
+.video-card iframe {
+  border-radius: 8px;
+  min-height: 180px; /* Altura mínima para o vídeo */
+}
+
+/* --- Fim dos Estilos Educação --- */
