@@ -415,7 +415,7 @@ nav::-webkit-scrollbar-thumb {
   width: 100%;
   max-width: 650px;
   /* ➡️ CORREÇÃO: Reduzindo a margem superior para 10px ou 0. */
-  margin: 10px auto 30px auto; /* 10px no topo, 30px na base, centralizado horizontalmente */
+  margin: 0px auto 30px auto; /* 10px no topo, 30px na base, centralizado horizontalmente */
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
@@ -776,6 +776,7 @@ nav::-webkit-scrollbar-thumb {
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
