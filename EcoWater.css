@@ -181,8 +181,9 @@ h2 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 2rem;
-  /* CORREÇÃO: Reduzir margin-bottom para 0 */
-  margin-bottom: 0px; 
+  /* CORREÇÃO: Margem superior zero e inferior mínima. */
+  margin-top: 0px; 
+  margin-bottom: 5px; 
 }
 
 h3 {
@@ -415,8 +416,8 @@ nav::-webkit-scrollbar-thumb {
   position: relative;
   width: 100%;
   max-width: 650px;
-  /* CORREÇÃO: Zerar a margem superior para subir ao máximo */
-  margin: 0 auto 30px auto; 
+  /* CORREÇÃO: Margem superior mínima (ou zero) para separar do título */
+  margin: 5px auto 30px auto; 
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
@@ -426,7 +427,7 @@ nav::-webkit-scrollbar-thumb {
   
 /* ✅ NOVO/AJUSTE: Adicione um espaçamento interno ao container que envolve o carrossel */
 .inicio-carrossel {
- padding: 0px 20px 20px 20px; /* 0px no topo, 20px laterais e base */
+padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
 }
 
 .carrossel-btn.anterior { left: 12px; }
@@ -778,6 +779,7 @@ nav::-webkit-scrollbar-thumb {
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
