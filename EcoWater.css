@@ -454,18 +454,20 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
 }
 
 /* Localize esta regra no seu CSS (Seção SEÇÕES "PÁGINA"): */
+/* Localize a regra '.pagina.ativa' no seu CSS e ajuste o padding-top: */
 .pagina.ativa {
   display: block !important;
   opacity: 1;
   transform: translateX(0);
   
-  /* ✅ CORREÇÃO: Adiciona uma margem superior GENEROSA (ex: 100px) 
-     para garantir que o conteúdo fique abaixo do header (130px de altura). */
-  padding-top: 100px; 
-  /* Adicionar padding horizontal para não grudar nas laterais. */
+  /* ✅ CORREÇÃO: Aumenta o padding-top para empurrar o conteúdo para baixo do header. */
+  padding-top: 150px; 
+  
+  /* Manter as outras propriedades de layout/scroll que você já tinha: */
+  overflow-y: auto; 
+  height: calc(100vh - 180px); /* Garante a altura de rolagem entre header e footer */
   padding-left: 20px;
   padding-right: 20px;
-  /* Garante que o conteúdo role corretamente. */
   padding-bottom: 50px; 
 }
 
@@ -817,6 +819,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
