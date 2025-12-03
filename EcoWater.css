@@ -2,12 +2,6 @@
   box-sizing: border-box;
 }
 
- body, html {
-    overflow-x: hidden; /* Remove barra horizontal */
-    overflow-y: auto;   /* Permite rolagem vertical (se precisar) */
-    height: 100%;       /* Garante que o body ocupe a altura da tela */
-}
-
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -825,6 +819,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
