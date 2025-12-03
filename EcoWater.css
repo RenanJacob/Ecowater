@@ -409,21 +409,19 @@ nav::-webkit-scrollbar-thumb {
 }
 
 /* botões */
-/* Corrija a regra existente para .carrossel */
+/* Localize esta regra no seu CSS (Seção CARROSSEL): */
 .carrossel {
   position: relative;
   width: 100%;
-  /* Define uma largura máxima razoável */
-  max-width: 650px; 
-  margin: 30px auto;
+  max-width: 650px;
+  /* ➡️ CORREÇÃO: Reduzindo a margem superior para 10px ou 0. */
+  margin: 10px auto 30px auto; /* 10px no topo, 30px na base, centralizado horizontalmente */
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-  /* Define uma proporção que não seja muito alta, ex: 4/3 */
   aspect-ratio: 4 / 3; 
   background: #fff;
 }
-
 /* ✅ NOVO/AJUSTE: Adicione um espaçamento interno ao container que envolve o carrossel */
 .inicio-carrossel {
     padding: 20px; /* Garante que o carrossel tenha espaço e não toque nas bordas */
@@ -778,6 +776,7 @@ nav::-webkit-scrollbar-thumb {
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
