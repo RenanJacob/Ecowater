@@ -16,8 +16,7 @@ body {
   color: #333;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  /* ✅ SOLUÇÃO DEFINITIVA: Adicionar uma margem inferior para compensar o footer fixo. */
+  /* ✅ CORREÇÃO APLICADA: Margem inferior para compensar o footer fixo e evitar o corte do botão. */
   margin-bottom: 50px; 
 }
 
@@ -826,6 +825,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
