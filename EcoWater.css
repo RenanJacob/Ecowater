@@ -438,8 +438,20 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
   to { opacity: 1; transform: scale(1); }
 }
 
+/* Localize esta regra no seu CSS (Seção SEÇÕES "PÁGINA"): */
 .pagina.ativa {
-  animation: slideIn 0.6s ease;
+  display: block !important;
+  opacity: 1;
+  transform: translateX(0);
+  
+  /* ✅ CORREÇÃO: Adiciona uma margem superior GENEROSA (ex: 100px) 
+     para garantir que o conteúdo fique abaixo do header (130px de altura). */
+  padding-top: 100px; 
+  /* Adicionar padding horizontal para não grudar nas laterais. */
+  padding-left: 20px;
+  padding-right: 20px;
+  /* Garante que o conteúdo role corretamente. */
+  padding-bottom: 50px; 
 }
 
 @keyframes slideIn {
@@ -779,6 +791,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
