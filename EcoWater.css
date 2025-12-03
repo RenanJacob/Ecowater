@@ -12,15 +12,15 @@ html, body {
 }
 
 body {
-  font-family: 'Roboto', sans-serif; /* Fonte padrão do corpo */
+  font-family: 'Arial', sans-serif; /* ✅ NOVA FONTE PADRÃO */
   margin: 0;
   padding: 0;
   background: #e3f2fd;
   color: #333;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin-bottom: 50px; 
 }
-
 header {
   background-color: #1565c0;
   color: white;
@@ -44,13 +44,14 @@ header {
   user-select: none;
 }
 
+/* Localize a regra '.header-content h1' e MODIFIQUE: */
 .header-content h1 {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 2.8rem;
-  line-height: 1.1;
-  letter-spacing: 1px;
+  margin: 0;
+  font-family: 'Georgia', serif; /* ✅ NOVA FONTE PARA TÍTULOS */
+  font-weight: 600;
+  font-size: 2.8rem;
+  line-height: 1.1;
+  letter-spacing: 1px;
 }
 
 .header-content p {
@@ -196,14 +197,14 @@ nav a:focus {
 }
 
 /* Localize e MODIFIQUE esta regra (Seção de Títulos): */
+/* Localize a regra 'h2' e MODIFIQUE: */
 h2 {
-  color: #0d47a1;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 2rem;
-  /* CORREÇÃO: Margem superior zero e inferior mínima. */
+  color: #0d47a1;
+  font-family: 'Arial', sans-serif; /* ✅ NOVA FONTE PARA H2 */
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 5px;
   margin-top: 0px; 
-  margin-bottom: 5px; 
 }
 
 h3 {
@@ -826,6 +827,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
