@@ -410,7 +410,6 @@ nav::-webkit-scrollbar-thumb {
 
 /* botões */
 /* Localize esta regra no seu CSS (Seção CARROSSEL): */
-.carrossel {
  .carrossel {
   position: relative;
   width: 100%;
@@ -778,6 +777,7 @@ nav::-webkit-scrollbar-thumb {
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
