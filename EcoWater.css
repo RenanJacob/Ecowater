@@ -9,13 +9,16 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #e3f2fd;
-  color: #333;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #e3f2fd;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* ✅ SOLUÇÃO DEFINITIVA: Adicionar uma margem inferior para compensar o footer fixo. */
+  margin-bottom: 50px; 
 }
 
 header {
@@ -823,6 +826,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
