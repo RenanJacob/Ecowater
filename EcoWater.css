@@ -416,7 +416,7 @@ nav::-webkit-scrollbar-thumb {
   width: 100%;
   max-width: 650px;
   /* ➡️ CORREÇÃO FINAL: Garantir que a margem superior é 0 */
-  margin: 0 auto 10px auto; /* 0 no topo, 10px na base, centralizado */
+  margin: 10px auto 40px auto; /* 0 no topo, 10px na base, centralizado */
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
@@ -426,7 +426,7 @@ nav::-webkit-scrollbar-thumb {
   
 /* ✅ NOVO/AJUSTE: Adicione um espaçamento interno ao container que envolve o carrossel */
 .inicio-carrossel {
-   padding: 0px 20px 20px 20px; /* 0px no topo, 20px laterais e base */
+   padding: 20px;
 }
 
 .carrossel-btn.anterior { left: 12px; }
@@ -778,6 +778,7 @@ nav::-webkit-scrollbar-thumb {
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
