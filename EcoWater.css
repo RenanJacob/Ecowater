@@ -152,12 +152,13 @@ nav a:focus {
   user-select: none;
 }
 
+/* Seu CSS existente para os botões */
 .btn-container button:hover,
 .btn-container button:focus {
   background-color: #f0f4ff;
   color: #0d47a1;
   outline: none;
-  transform: scale(1.05);
+  transform: scale(1.05); /* Efeito de crescimento */
 }
 
 /* SEÇÕES "PÁGINA" COM ANIMAÇÃO */
@@ -752,3 +753,4 @@ nav::-webkit-scrollbar-thumb {
     margin-right: 8px;
     font-size: 1.1em;
 }
+
