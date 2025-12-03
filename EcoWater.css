@@ -169,10 +169,18 @@ nav a:focus {
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
+/* Localize esta regra no seu CSS (Seção SEÇÕES "PÁGINA"): */
 .pagina.ativa {
   display: block !important;
   opacity: 1;
   transform: translateX(0);
+  
+  /* ✅ CORREÇÃO: Mantém o padding superior. */
+  padding-top: 100px; 
+  padding-left: 20px;
+  padding-right: 20px;
+  /* ➡️ CORREÇÃO: Adiciona um espaçamento GRANDE no final (para o footer fixo) */
+  padding-bottom: 80px; 
 }
 
 /* Localize e MODIFIQUE esta regra (Seção de Títulos): */
@@ -292,7 +300,8 @@ form input:focus {
 
 /* Localize a regra geral do botão de envio */
 .submit-btn {
-  margin-top: 18px;
+ margin-top: 18px;
+  margin-bottom: 18px;
   padding: 14px;
   font-size: 1.15rem;
   font-weight: 700;
@@ -803,6 +812,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
