@@ -195,6 +195,7 @@ h2 {
   font-weight: 700;
   font-size: 2rem;
   margin-bottom: 12px;
+  margin-top: 0px;
 }
 
 h3 {
@@ -819,6 +820,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
