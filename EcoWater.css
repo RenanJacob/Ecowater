@@ -290,20 +290,23 @@ form input:focus {
   outline: none;
 }
 
+/* Localize a regra geral do botão de envio */
 .submit-btn {
-  margin-top: 18px;
-  padding: 14px;
-  font-size: 1.15rem;
-  font-weight: 700;
-  background-color: #1565c0;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  user-select: none;
-  box-sizing: border-box;
-  width: 100%; /* Garante que o botão use a largura total */
+  margin-top: 18px;
+  padding: 14px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  background-color: #1565c0;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  user-select: none;
+  
+  /* ✅ CORREÇÃO: Garante o ajuste do tamanho */
+  box-sizing: border-box; 
+  width: 100%; 
 }
 
 
@@ -541,6 +544,15 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
   /* ✅ CORREÇÃO: Aplicar a todas as entradas de formulário para consistência */
   box-sizing: border-box;
 
+/* FORMULÁRIO - PÁGINA MULHERES */
+#pagina-mulheres form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 500px;
+  margin-top: 20px;
+}
+  
   outline: none;
   border-color: #1565c0;
 }
@@ -791,6 +803,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
