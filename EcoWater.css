@@ -175,12 +175,13 @@ nav a:focus {
   transform: translateX(0);
 }
 
+/* Localize e MODIFIQUE esta regra (Seção de Títulos): */
 h2 {
   color: #0d47a1;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 2rem;
-  /* ➡️ CORREÇÃO: Reduzir margin-bottom para 0 ou um valor bem pequeno. */
+  /* CORREÇÃO: Reduzir margin-bottom para 0 */
   margin-bottom: 0px; 
 }
 
@@ -414,8 +415,8 @@ nav::-webkit-scrollbar-thumb {
   position: relative;
   width: 100%;
   max-width: 650px;
-  /* ➡️ AJUSTE FINAL: Margem superior pequena para separar do título (h2) */
-  margin: 5px auto 10px auto; 
+  /* CORREÇÃO: Zerar a margem superior para subir ao máximo */
+  margin: 0 auto 30px auto; 
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
@@ -425,7 +426,7 @@ nav::-webkit-scrollbar-thumb {
   
 /* ✅ NOVO/AJUSTE: Adicione um espaçamento interno ao container que envolve o carrossel */
 .inicio-carrossel {
-  padding: 0px 20px 20px 20px;
+ padding: 0px 20px 20px 20px; /* 0px no topo, 20px laterais e base */
 }
 
 .carrossel-btn.anterior { left: 12px; }
