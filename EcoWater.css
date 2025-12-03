@@ -720,3 +720,35 @@ nav::-webkit-scrollbar-thumb {
 }
 
 /* --- Fim dos Estilos Educação --- */
+
+
+
+/* --- Estilos para a Seção Para Mulheres --- */
+
+#pagina-mulheres h2 {
+    color: #c2185b; /* Um tom de rosa/vinho */
+}
+
+#pagina-mulheres .submit-btn {
+    background-color: #c2185b;
+}
+
+#pagina-mulheres .submit-btn:hover {
+    background-color: #880e4f;
+}
+
+#pagina-mulheres form label {
+    color: #c2185b;
+}
+
+#pagina-mulheres ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#pagina-mulheres ul li::before {
+    content: '💖 '; /* Ícone de coração para um toque especial */
+    color: #c2185b;
+    margin-right: 8px;
+    font-size: 1.1em;
+}
