@@ -277,10 +277,9 @@ form input {
   width: 100%;
   user-select: text;
   
-  /* ✅ ADICIONE ESTA LINHA: */
-  box-sizing: border-box;
+  /* ✅ CORREÇÃO: Garante que o padding não aumente a largura total */
+  box-sizing: border-box; 
 }
-
 
 
 form input:focus {
@@ -300,7 +299,10 @@ form input:focus {
   cursor: pointer;
   transition: background-color 0.3s;
   user-select: none;
+  box-sizing: border-box;
+  width: 100%; /* Garante que o botão use a largura total */
 }
+
 
 .submit-btn:hover,
 .submit-btn:focus {
@@ -404,19 +406,21 @@ nav::-webkit-scrollbar-thumb {
 }
 
 /* botões */
-.carrossel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(21,101,192,0.75);
-  border: none;
-  color: white;
-  font-size: 2rem;
-  padding: 8px 14px;
-  cursor: pointer;
-  border-radius: 50%;
-  z-index: 10;
-  transition: background-color 0.2s;
+.carrossel {
+  position: relative;
+  width: 100%;
+  max-width: 650px; /* Reduzi um pouco a largura máxima para dar mais espaço */
+  margin: 30px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  aspect-ratio: 16 / 9;
+  background: #fff;
+}
+
+/* ✅ NOVO/AJUSTE: Adicione um espaçamento interno ao container que envolve o carrossel */
+.inicio-carrossel {
+    padding: 20px; /* Garante que o carrossel tenha espaço e não toque nas bordas */
 }
 
 .carrossel-btn.anterior { left: 12px; }
@@ -503,9 +507,21 @@ nav::-webkit-scrollbar-thumb {
   resize: vertical;
 }
 
-#pagina-registro input:focus,
-#pagina-servicos select:focus,
-#pagina-servicos textarea:focus {
+#pagina-registro input,
+#pagina-servicos select,
+#pagina-servicos textarea,
+#pagina-mulheres input,
+#pagina-mulheres textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1.5px solid #bbb;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  transition: border-color 0.3s;
+  
+  /* ✅ CORREÇÃO: Aplicar a todas as entradas de formulário para consistência */
+  box-sizing: border-box;
+
   outline: none;
   border-color: #1565c0;
 }
@@ -546,11 +562,6 @@ nav::-webkit-scrollbar-thumb {
 #tabela-registros {
   margin-top: 20px;
 }
-
-
-
-
-
 
 
 
@@ -633,6 +644,7 @@ nav::-webkit-scrollbar-thumb {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+  box-sizing: border-box;
 }
 
 .form-bloco button[type="submit"]:hover {
@@ -760,6 +772,7 @@ nav::-webkit-scrollbar-thumb {
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
