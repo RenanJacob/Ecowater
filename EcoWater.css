@@ -411,20 +411,22 @@ nav::-webkit-scrollbar-thumb {
 /* botões */
 /* Localize esta regra no seu CSS (Seção CARROSSEL): */
 .carrossel {
+ .carrossel {
   position: relative;
   width: 100%;
   max-width: 650px;
-  /* ➡️ CORREÇÃO: Reduzindo a margem superior para 10px ou 0. */
-  margin: 0px auto 10px auto; /* 10px no topo, 30px na base, centralizado horizontalmente */
+  /* ➡️ CORREÇÃO FINAL: Garantir que a margem superior é 0 */
+  margin: 0 auto 10px auto; /* 0 no topo, 10px na base, centralizado */
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
   aspect-ratio: 4 / 3; 
   background: #fff;
 }
+  
 /* ✅ NOVO/AJUSTE: Adicione um espaçamento interno ao container que envolve o carrossel */
 .inicio-carrossel {
-    padding: 20px; /* Garante que o carrossel tenha espaço e não toque nas bordas */
+   padding: 0px 20px 20px 20px; /* 0px no topo, 20px laterais e base */
 }
 
 .carrossel-btn.anterior { left: 12px; }
@@ -776,6 +778,7 @@ nav::-webkit-scrollbar-thumb {
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
