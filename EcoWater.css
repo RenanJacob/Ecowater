@@ -175,11 +175,15 @@ nav a:focus {
   opacity: 1;
   transform: translateX(0);
   
-  /* ✅ CORREÇÃO: Mantém o padding superior. */
+  /* ✅ CORREÇÃO: Garante que a altura da página é no mínimo a altura da tela, 
+     menos a altura do cabeçalho (aprox. 130px) e do rodapé fixo (aprox. 50px). */
+  min-height: calc(100vh - 180px); /* 100vh = Altura total da tela */
+  
+  /* Mantém o padding superior para descer abaixo do header. */
   padding-top: 100px; 
   padding-left: 20px;
   padding-right: 20px;
-  /* ➡️ CORREÇÃO: Adiciona um espaçamento GRANDE no final (para o footer fixo) */
+  /* Mantém o espaçamento GRANDE no final (para o footer fixo) */
   padding-bottom: 80px; 
 }
 
@@ -560,6 +564,8 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
   gap: 12px;
   max-width: 500px;
   margin-top: 20px;
+  /* ✅ CORREÇÃO: Adiciona uma margem inferior para dar um respiro extra */
+  margin-bottom: 30px; 
 }
   
   outline: none;
@@ -812,6 +818,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
