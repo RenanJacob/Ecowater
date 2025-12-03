@@ -3,23 +3,14 @@
 }
 
 
-html, body {
-    /* Mantendo as correções anteriores para a rolagem, se aplicadas */
-    margin: 0;
-    padding: 0;
-    /* Adicione overflow-x: hidden para garantir que não haja barra de rolagem horizontal */
-    overflow-x: hidden; 
-}
-
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* ✅ Fonte limpa e padrão para o corpo */
-  margin: 0;
-  padding: 0;
-  background: #e3f2fd;
-  color: #333;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin-bottom: 50px; 
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #e3f2fd;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 header {
@@ -47,12 +38,12 @@ header {
 
 /* Localize a regra '.header-content h1' e MODIFIQUE: */
 .header-content h1 {
-  margin: 0;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* ✅ Usa a mesma fonte para TÍTULOS */
-  font-weight: 600;
-  font-size: 2.8rem;
-  line-height: 1.1;
-  letter-spacing: 1px;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 2.8rem;
+  line-height: 1.1;
+  letter-spacing: 1px;
 }
 
 .header-content p {
@@ -199,12 +190,11 @@ nav a:focus {
 
 /* Localize e MODIFIQUE esta regra (Seção de Títulos): */
 h2 {
-  color: #0d47a1;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* ✅ Usa a mesma fonte para H2 */
-  font-weight: 700;
-  font-size: 2rem;
-  margin-bottom: 5px;
-  margin-top: 0px; 
+  color: #0d47a1;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 12px;
 }
 
 h3 {
@@ -827,6 +817,7 @@ padding: 0px 0px 20px 0px; /* 0px no topo, 0px nas laterais, 20px na base */
     margin-right: 8px;
     font-size: 1.1em;
 }
+
 
 
 
